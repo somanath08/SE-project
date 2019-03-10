@@ -45,8 +45,5 @@ export class RegistrationFormComponent {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    this.formValue = this.profileForm.value;
-    console.log(this.formValue);
-    console.log(this.profileForm.errors);
   }
 }
