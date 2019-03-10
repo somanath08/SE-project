@@ -1,15 +1,13 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <mat-card class="form-card">
     <mat-card-title class="heading">Registration form</mat-card-title>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>First Name</mat-label>
       <input matInput placeholder="" [formControlName]="firstName" required />
       <mat-icon matSuffix>perm_identity</mat-icon>
-      <mat-error>
-        {{ errors.firstName }}
-      </mat-error> </mat-form-field
+      <mat-error> </mat-error> </mat-form-field
     ><br />
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>Last Name</mat-label>
       <input matInput placeholder="" [formControlName]="lastName" required />
       <mat-icon matSuffix>perm_identity</mat-icon
@@ -17,7 +15,7 @@
         Enter a valid last name
       </mat-error> </mat-form-field
     ><br />
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>User Name</mat-label>
       <input
         matInput
@@ -31,7 +29,7 @@
         Enter a valid user name
       </mat-error> </mat-form-field
     ><br />
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>Password</mat-label>
       <input
         matInput
@@ -45,7 +43,7 @@
         Enter a valid password
       </mat-error></mat-form-field
     ><br />
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>Confirm</mat-label>
       <input
         matInput
@@ -59,7 +57,7 @@
         This password should match the passowrd that was previously entered
       </mat-error></mat-form-field
     ><br />
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>Email</mat-label>
       <input
         matInput
@@ -73,7 +71,7 @@
         Enter a valid email
       </mat-error></mat-form-field
     ><br />
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>Mobile</mat-label>
       <input matInput placeholder="" formControlName="mobile" />
       <mat-icon matSuffix>phone</mat-icon>

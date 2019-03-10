@@ -45,5 +45,6 @@ export class RegistrationFormComponent {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
+    console.log(this.profileForm.get('password').hasError('pattern'));
   }
 }
