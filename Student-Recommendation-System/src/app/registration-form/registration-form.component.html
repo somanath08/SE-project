@@ -3,17 +3,23 @@
     <mat-card-title class="heading">Registration form</mat-card-title>
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
-      <input matInput placeholder="" formControlName="firstName" />
+      <input matInput placeholder="" formControlName="firstName" required />
       <mat-icon matSuffix>perm_identity</mat-icon> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>Last Name</mat-label>
-      <input matInput placeholder="" formControlName="lastName" />
+      <input matInput placeholder="" formControlName="lastName" required />
       <mat-icon matSuffix>perm_identity</mat-icon> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>User Name</mat-label>
-      <input matInput placeholder="" formControlName="userName" />
+      <input
+        matInput
+        placeholder=""
+        formControlName="userName"
+        required
+        minlength="4"
+      />
       <mat-icon matSuffix>face</mat-icon> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
@@ -23,6 +29,7 @@
         placeholder=""
         type="password"
         formControlName="password"
+        required
       />
       <mat-icon matSuffix>lock</mat-icon> </mat-form-field
     ><br />
@@ -33,12 +40,19 @@
         placeholder=""
         type="password"
         formControlName="confirm"
+        required
       />
       <mat-icon matSuffix>lock</mat-icon> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="" type="email" formControlName="email" />
+      <input
+        matInput
+        placeholder=""
+        type="email"
+        formControlName="email"
+        required
+      />
       <mat-icon matSuffix>email</mat-icon> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
@@ -50,4 +64,6 @@
       Create
     </button>
   </mat-card>
+  Value : {{ formValue }}
+  <p>Form Status: {{ profileForm.status }}</p>
 </form>

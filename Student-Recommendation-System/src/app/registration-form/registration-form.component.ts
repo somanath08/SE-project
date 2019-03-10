@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-registration-form',
@@ -7,22 +14,39 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./registration-form.component.css'],
   })
 export class RegistrationFormComponent {
-  profileForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    userName: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-      checkPasswordStrength(),
-    ]),
-    confirm: new FormControl('', [Validators.required, Validators.minLength(8), confirmPassword()]),
-    email: new FormControl('', [Validators.email, Validators.required]),
-    mobile: new FormControl('', [Validators.maxLength(10)]),
-  });
+  formValue = '';
+
+  confirmPasswordValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+    const passowrdValue = control.get('password');
+    const confirmValue = control.get('confirm');
+    return passowrdValue === confirmValue ? { confirmPassword: true } : null;
+  };
+
+  profileForm = new FormGroup(
+    {
+      firstName: new FormControl('', [Validators.required, Validators.pattern(/[a-zA-z\s]/)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(/[a-zA-z\s]/)]),
+      userName: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[1-9]{2}[A-Z]{4}[1-9]{2}$/),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
+        ),
+      ]),
+      confirm: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      mobile: new FormControl('', [Validators.pattern(/^[0-9]{10}$/)]),
+    },
+    { validators: this.confirmPasswordValidator },
+  );
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.log(this.profileForm.value);
+    this.formValue = this.profileForm.value;
+    console.log(this.formValue);
+    console.log(this.profileForm.errors);
   }
 }
