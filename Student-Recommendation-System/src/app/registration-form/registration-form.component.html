@@ -3,13 +3,19 @@
     <mat-card-title class="heading">Registration form</mat-card-title>
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
-      <input matInput placeholder="" formControlName="firstName" required />
-      <mat-icon matSuffix>perm_identity</mat-icon> </mat-form-field
+      <input matInput placeholder="" [formControlName]="firstName" required />
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-error>
+        {{ errors.firstName }}
+      </mat-error> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>Last Name</mat-label>
-      <input matInput placeholder="" formControlName="lastName" required />
-      <mat-icon matSuffix>perm_identity</mat-icon> </mat-form-field
+      <input matInput placeholder="" [formControlName]="lastName" required />
+      <mat-icon matSuffix>perm_identity</mat-icon
+      ><mat-error>
+        Enter a valid last name
+      </mat-error> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>User Name</mat-label>
@@ -20,7 +26,10 @@
         required
         minlength="4"
       />
-      <mat-icon matSuffix>face</mat-icon> </mat-form-field
+      <mat-icon matSuffix>face</mat-icon
+      ><mat-error>
+        Enter a valid user name
+      </mat-error> </mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
@@ -31,7 +40,10 @@
         formControlName="password"
         required
       />
-      <mat-icon matSuffix>lock</mat-icon> </mat-form-field
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error>
+        Enter a valid password
+      </mat-error></mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>Confirm</mat-label>
@@ -42,7 +54,10 @@
         formControlName="confirm"
         required
       />
-      <mat-icon matSuffix>lock</mat-icon> </mat-form-field
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error>
+        This password should match the passowrd that was previously entered
+      </mat-error></mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
@@ -53,17 +68,21 @@
         formControlName="email"
         required
       />
-      <mat-icon matSuffix>email</mat-icon> </mat-form-field
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error>
+        Enter a valid email
+      </mat-error></mat-form-field
     ><br />
     <mat-form-field appearance="outline">
       <mat-label>Mobile</mat-label>
       <input matInput placeholder="" formControlName="mobile" />
-      <mat-icon matSuffix>phone</mat-icon> </mat-form-field
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-error>
+        Enter a valid mobile number
+      </mat-error></mat-form-field
     ><br />
     <button mat-raised-button color="primary" [disabled]="!profileForm.valid">
       Create
     </button>
   </mat-card>
-  Value : {{ formValue }}
-  <p>Form Status: {{ profileForm.status }}</p>
 </form>
