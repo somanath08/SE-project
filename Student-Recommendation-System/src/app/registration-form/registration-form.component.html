@@ -3,13 +3,13 @@
     <mat-card-title class="heading">Registration form</mat-card-title>
     <mat-form-field appearance="outline" class="margin">
       <mat-label>First Name</mat-label>
-      <input matInput placeholder="" [formControlName]="firstName" required />
+      <input matInput placeholder="" formControlName="firstName" required />
       <mat-icon matSuffix>perm_identity</mat-icon>
       <mat-error> </mat-error> </mat-form-field
     ><br />
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Last Name</mat-label>
-      <input matInput placeholder="" [formControlName]="lastName" required />
+      <input matInput placeholder="" formControlName="lastName" required />
       <mat-icon matSuffix>perm_identity</mat-icon
       ><mat-error>
         Enter a valid last name
