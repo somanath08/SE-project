@@ -15,7 +15,10 @@ import {
   MatStepLabel,
   MatStepperIcon,
   MatStepperNext,
-  MatHorizontalStepper
+  MatHorizontalStepper,
+  MatSelect,
+  MatOption,
+  MatSelectModule,
 } from '@angular/material';
 
 @NgModule({
@@ -27,6 +30,7 @@ import {
   MatCardModule,
   MatButtonModule,
   MatStepperModule,
+  MatSelectModule,
   ],
   exports: [
   MatFormFieldModule,
@@ -35,6 +39,7 @@ import {
   MatCardModule,
   MatButtonModule,
   MatStepperModule,
+  MatSelectModule,
   ],
   })
 export class MaterialImportsModule {}

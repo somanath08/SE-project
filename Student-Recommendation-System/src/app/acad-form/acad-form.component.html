@@ -10,11 +10,10 @@
             placeholder=""
             formControlName="percentage"
             required
-            minlength="4"
           />
           <mat-icon matSuffix>face</mat-icon
           ><mat-error>
-            Enter a valid user name
+            Enter a valid percentage
           </mat-error>
         </mat-form-field>
         <div>
@@ -27,13 +26,10 @@
         <ng-template matStepLabel>Pre-University Course</ng-template>
         <mat-form-field appearance="outline" class="margin">
           <mat-label>Percentage</mat-label>
-          <input
-            matInput
-            placeholder=""
-            formControlName="percentage"
-            required
-            minlength="4"
-          />
+          <mat-select placeholder="Stream" formControlName="stream">
+            <mat-option value="MPC">MPC</mat-option>
+            <mat-option value="BPC">BPC</mat-option>
+          </mat-select>
           <mat-icon matSuffix>face</mat-icon
           ><mat-error>
             Enter a valid user name
