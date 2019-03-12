@@ -1,3 +1,101 @@
-<p>
-  acad-form works!
-</p>
+<mat-card class="form-card"
+  ><mat-horizontal-stepper>
+    <mat-step [stepControl]="matriculation">
+      <form [formGroup]="matriculation">
+        <ng-template matStepLabel>Matriculation</ng-template>
+        <mat-form-field appearance="outline" class="margin">
+          <mat-label>Percentage</mat-label>
+          <input
+            matInput
+            placeholder=""
+            formControlName="percentage"
+            required
+            minlength="4"
+          />
+          <mat-icon matSuffix>face</mat-icon
+          ><mat-error>
+            Enter a valid user name
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="puc">
+      <form [formGroup]="puc">
+        <ng-template matStepLabel>Pre-University Course</ng-template>
+        <mat-form-field appearance="outline" class="margin">
+          <mat-label>Percentage</mat-label>
+          <input
+            matInput
+            placeholder=""
+            formControlName="percentage"
+            required
+            minlength="4"
+          />
+          <mat-icon matSuffix>face</mat-icon
+          ><mat-error>
+            Enter a valid user name
+          </mat-error> </mat-form-field
+        ><br />
+        <mat-form-field appearance="outline" class="margin">
+          <mat-label>Stream</mat-label>
+          <input
+            matInput
+            placeholder=""
+            formControlName="stream"
+            required
+            minlength="4"
+          />
+          <mat-icon matSuffix>face</mat-icon
+          ><mat-error>
+            Enter a valid user name
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="university">
+      <form [formGroup]="university">
+        <ng-template matStepLabel>University</ng-template>
+        <mat-form-field appearance="outline" class="margin">
+          <mat-label>Percentage</mat-label>
+          <input
+            matInput
+            placeholder=""
+            formControlName="percentage"
+            required
+            minlength="4"
+          />
+          <mat-icon matSuffix>face</mat-icon
+          ><mat-error>
+            Enter a valid user name
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline" class="margin">
+          <mat-label>Stream</mat-label>
+          <input
+            matInput
+            placeholder=""
+            formControlName="stream"
+            required
+            minlength="4"
+          />
+          <mat-icon matSuffix>face</mat-icon
+          ><mat-error>
+            Enter a valid user name
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>

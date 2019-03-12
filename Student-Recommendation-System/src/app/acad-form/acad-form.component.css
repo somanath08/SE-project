@@ -1,0 +1,15 @@
+.form-card {
+  width: 800px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.heading {
+  margin: 20px;
+  text-align: center;
+  color: indigo;
+}
+
+.margin {
+  margin-bottom: 15px;
+}
