@@ -1,5 +1,5 @@
 <mat-card class="form-card"
-  ><mat-horizontal-stepper>
+  ><mat-horizontal-stepper linear>
     <mat-step [stepControl]="matriculation">
       <form [formGroup]="matriculation">
         <ng-template matStepLabel>Matriculation</ng-template>
@@ -26,27 +26,27 @@
         <ng-template matStepLabel>Pre-University Course</ng-template>
         <mat-form-field appearance="outline" class="margin">
           <mat-label>Percentage</mat-label>
-          <mat-select placeholder="Stream" formControlName="stream">
-            <mat-option value="MPC">MPC</mat-option>
-            <mat-option value="BPC">BPC</mat-option>
-          </mat-select>
-          <mat-icon matSuffix>face</mat-icon
-          ><mat-error>
-            Enter a valid user name
-          </mat-error> </mat-form-field
-        ><br />
-        <mat-form-field appearance="outline" class="margin">
-          <mat-label>Stream</mat-label>
           <input
             matInput
             placeholder=""
-            formControlName="stream"
+            formControlName="percentage"
             required
             minlength="4"
           />
           <mat-icon matSuffix>face</mat-icon
           ><mat-error>
-            Enter a valid user name
+            Enter a valid percentage
+          </mat-error> </mat-form-field
+        ><br />
+        <mat-form-field appearance="outline" class="margin">
+          <mat-label>Stream</mat-label>
+          <mat-select placeholder="Stream" formControlName="stream" required>
+            <mat-option value="MPC">MPC</mat-option>
+            <mat-option value="BPC">BPC</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>face</mat-icon
+          ><mat-error>
+            Select a valid stream
           </mat-error>
         </mat-form-field>
         <div>
@@ -69,22 +69,19 @@
           />
           <mat-icon matSuffix>face</mat-icon
           ><mat-error>
-            Enter a valid user name
+            Enter a valid percentage
           </mat-error>
         </mat-form-field>
         <br />
         <mat-form-field appearance="outline" class="margin">
           <mat-label>Stream</mat-label>
-          <input
-            matInput
-            placeholder=""
-            formControlName="stream"
-            required
-            minlength="4"
-          />
+          <mat-select placeholder="Stream" formControlName="stream" required>
+            <mat-option value="MPC">CSE</mat-option>
+            <mat-option value="BPC">Others</mat-option>
+          </mat-select>
           <mat-icon matSuffix>face</mat-icon
           ><mat-error>
-            Enter a valid user name
+            Select a valid stream
           </mat-error>
         </mat-form-field>
         <div>
