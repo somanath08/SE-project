@@ -8,9 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { MaterialImportsModule } from './material-imports.module';
+import { AcadFormComponent } from './acad-form/acad-form.component';
 
 @NgModule({
-  declarations: [AppComponent, RegistrationFormComponent],
+  declarations: [AppComponent, RegistrationFormComponent, AcadFormComponent],
   imports: [
   BrowserModule,
   AppRoutingModule,
