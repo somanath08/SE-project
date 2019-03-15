@@ -7,7 +7,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 // Routes
 const loginRouter = require('./Routes/login.route');
-
+const registerRouter = require('./Routes/register.route');
 // Server
 const app = express();
 const distPath = path.join(__dirname, '/Views');
@@ -23,6 +23,7 @@ db.once('open', () => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use('/login', loginRouter);
+  app.use('./register', registerRouter);
 
   // app.get("/", (req, res) => {
   //   res.sendFile(distPath + "index.html");
