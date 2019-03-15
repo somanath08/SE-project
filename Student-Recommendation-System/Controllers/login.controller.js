@@ -1,13 +1,6 @@
-// COntroller to handle all login/* routes
+// Controller to handle all login/* routes
 /* eslint-disable no-console */
 import Users from '../Models/Users.model';
-// const loginDetails = function (req, res) {
-// //   find({ user: req.body.user }).exec((err, credentials) => {
-// //     if (!credentials) return res.send('Not found')
-// //     if (credentials.password === req.body.password) return res.send('Success');
-// //     return res.send('Invalid');
-// //   }
-// }
 
 const verifyCredentials = (request, response) => {
   Users.find({ user: request.body.user }).exec((err, doc) => {
