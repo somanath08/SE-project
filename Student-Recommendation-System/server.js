@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 // Start point of the server
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -12,7 +13,7 @@ const acadRouter = require('./Routes/acad.route');
 // Server
 const app = express();
 const distPath = path.join(__dirname, '/Views');
-mongoose.connect('mongodb://localhost/test1', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
@@ -30,6 +31,6 @@ db.once('open', () => {
   // });
 
   app.listen(3000, () => {
-    console.log('listening on 3000');
+    console.log(`listening on ${process.env.PORT}`);
   });
 });
