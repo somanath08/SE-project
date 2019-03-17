@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import {
-  FormGroup,
-  FormControl,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors,
+  FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors,
 } from '@angular/forms';
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'app-registration-form',
@@ -14,7 +11,11 @@ import {
   styleUrls: ['./registration-form.component.css'],
   })
 export class RegistrationFormComponent {
-  formValue = '';
+  constructor(
+    private registerService: RegisterService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {}
 
   confirmPasswordValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
     const passowrdValue = control.get('password');
@@ -26,9 +27,9 @@ export class RegistrationFormComponent {
     {
       firstName: new FormControl('', [Validators.required, Validators.pattern(/[a-zA-z\s]/)]),
       lastName: new FormControl('', [Validators.required, Validators.pattern(/[a-zA-z\s]/)]),
-      userName: new FormControl('', [
+      user: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^[1-9]{2}[A-Z]{4}[1-9]{2}$/),
+        Validators.pattern(/^[1-9]{2}[a-z]{4}[1-9]{2}$/),
       ]),
       password: new FormControl('', [
         Validators.required,
@@ -45,6 +46,11 @@ export class RegistrationFormComponent {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.log(this.profileForm.get('password').hasError('pattern'));
+    console.log(this.profileForm.value);
+    this.registerService.registeration(this.profileForm.value).subscribe((status) => {
+      if (status === 'Saved') {
+        console.log(status);
+      }
+    });
   }
 }

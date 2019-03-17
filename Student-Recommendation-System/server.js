@@ -14,6 +14,7 @@ const acadRouter = require('./Routes/acad.route');
 const app = express();
 const distPath = path.join(__dirname, '/Views');
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {

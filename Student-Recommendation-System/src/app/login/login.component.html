@@ -6,7 +6,7 @@
       <input
         matInput
         placeholder=""
-        formControlName="userName"
+        formControlName="user"
         required
         minlength="4"
       />
@@ -31,6 +31,15 @@
     ><br />
     <button mat-raised-button color="primary" [disabled]="!profileForm.valid">
       Login
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      color="primary"
+      class="pad"
+      routerLink="/registration"
+    >
+      Register
     </button>
   </mat-card>
 </form>

@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 
 @Component({
@@ -23,9 +16,9 @@ export class LoginComponent {
   ) {}
 
   profileForm = new FormGroup({
-    userName: new FormControl('', [
+    user: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[1-9]{2}[A-Z||a-z]{4}[1-9]{2}$/),
+      Validators.pattern(/^[1-9]{2}[A-Z||a-z]{4}[0-9]{2}$/),
     ]),
     password: new FormControl('', [Validators.required]),
   });
@@ -34,8 +27,8 @@ export class LoginComponent {
     // TODO: Use EventEmitter with form value
     console.log(this.profileForm.value);
     this.loginService.verifyCredentials(this.profileForm.value).subscribe((status) => {
-      if (status === 'Invalid') {
-        console.log('Success');
+      console.log(status);
+      if (status === 'Success') {
         this.router.navigate(['/dashboard']);
       }
     });

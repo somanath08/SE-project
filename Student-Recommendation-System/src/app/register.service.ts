@@ -6,10 +6,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
   })
-export class LoginService {
+export class RegisterService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:3000/login/verify';
+  private apiUrl = 'http://localhost:3000/register/add';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,12 +22,12 @@ export class LoginService {
   };
 
   // URL to web api
-  verifyCredentials(data: any): Observable<string> {
+  registeration(data: any): Observable<string> {
     return this.http
       .post(this.apiUrl, data, { headers: this.httpOptions.headers, responseType: 'text' })
       .pipe(
         tap(_ => console.log('Got response')),
-        catchError(this.handleError<string>('verifyCredentials', '')),
+        catchError(this.handleError<string>('register', '')),
       );
   }
 
