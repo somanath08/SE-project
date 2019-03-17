@@ -17,8 +17,6 @@ import { LoginService } from '../login.service';
 export class LoginComponent {
   constructor(private loginService: LoginService) {}
 
-  formValue = '';
-
   verified = '';
 
   profileForm = new FormGroup({
