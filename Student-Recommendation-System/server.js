@@ -11,10 +11,8 @@ const registerRouter = require('./Routes/register.route');
 // Server
 const app = express();
 const distPath = path.join(__dirname, '/Views');
-mongoose.Promise = global.Promise;
-const db = mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/test', {
-  useNewUrlParser: true,
-}).connection;
+mongoose.connect('mongodb://localhost/app', { useNewUrlParser: true });
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connetion to DB up!');
@@ -29,7 +27,7 @@ db.once('open', () => {
   //   res.sendFile(distPath + "index.html");
   // });
 
-  app.listen(process.env.PORT, () => {
-    console.log(`listening on ${process.env.PORT}`);
+  app.listen(3000, () => {
+    console.log('listening on 3000');
   });
 });
