@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { verifyCredentials } from '../Controllers/login.controller';
+
+const callback = require('../Controllers/login.controller');
 
 const router = Router();
-router.post('/verify', verifyCredentials);
+router.post('/verify', callback.verifyCredentials);
 export default router;

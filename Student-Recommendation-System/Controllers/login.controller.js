@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 import Users from '../Models/Users.model';
 
-const verifyCredentials = (request, response) => {
+exports.verifyCredentials = (request, response) => {
   Users.find({ user: request.body.user }).exec((err, doc) => {
     if (err) console.log('An error cooured while verifying');
     if (!doc) return response.send('Not found');
@@ -10,5 +10,3 @@ const verifyCredentials = (request, response) => {
     return response.send('Invalid');
   });
 };
-
-module.exports = verifyCredentials;

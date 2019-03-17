@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { addUser } from '../Controllers/login.controller';
+
+const callback = require('../Controllers/register.controller');
 
 const router = Router();
-router.post('/add', addUser);
+router.post('/add', callback.addUser);
 export default router;
