@@ -8,10 +8,11 @@ const mongoose = require('mongoose');
 // Routes
 const loginRouter = require('./Routes/login.route');
 const registerRouter = require('./Routes/register.route');
+const acadRouter = require('./Routes/acad.route');
 // Server
 const app = express();
 const distPath = path.join(__dirname, '/Views');
-mongoose.connect('mongodb://localhost/app', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/test1', { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
@@ -22,6 +23,7 @@ db.once('open', () => {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use('/login', loginRouter);
   app.use('/register', registerRouter);
+  app.use('/academic', acadRouter);
 
   // app.get("/", (req, res) => {
   //   res.sendFile(distPath + "index.html");

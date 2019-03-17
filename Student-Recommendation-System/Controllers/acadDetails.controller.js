@@ -16,5 +16,3 @@ exports.addAcadDetails = (request, response) => {
     return response.send('Saved');
   });
 };
-
-export default module;
