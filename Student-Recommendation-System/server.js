@@ -23,7 +23,7 @@ db.once('open', () => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use('/login', loginRouter);
-  app.use('./register', registerRouter);
+  app.use('/register', registerRouter);
 
   // app.get("/", (req, res) => {
   //   res.sendFile(distPath + "index.html");
