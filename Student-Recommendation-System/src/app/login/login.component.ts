@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -15,9 +16,11 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css'],
   })
 export class LoginComponent {
-  constructor(private loginService: LoginService) {}
-
-  verified = '';
+  constructor(
+    private loginService: LoginService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {}
 
   profileForm = new FormGroup({
     userName: new FormControl('', [
@@ -31,8 +34,10 @@ export class LoginComponent {
     // TODO: Use EventEmitter with form value
     console.log(this.profileForm.value);
     this.loginService.verifyCredentials(this.profileForm.value).subscribe((status) => {
-      this.verified = status;
-      console.log(this.verified);
+      if (status === 'Invalid') {
+        console.log('Success');
+        this.router.navigate(['/dashboard']);
+      }
     });
   }
 }
