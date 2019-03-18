@@ -7,12 +7,21 @@ exports.addAcadDetails = (request, response) => {
   // Update the user to have details
 
   const newUserDetails = new Student({
-    user: request.body.user,
-    percentageTen: request.body.percentageTen,
-    percentagePUC: request.body.percentagePUC,
-    percentageUni: request.body.percentageUni,
-    StreamPUC: request.body.streamPUC,
-    StreamUni: request.body.streamUni,
+    user: request.body.puc.user,
+    stream: request.body.puc.stream,
+    uniStream: request.body.university.stream,
+    algo: request.body.university.algo,
+    os: request.body.university.os,
+    database: request.body.university.database,
+    networks: request.body.university.networks,
+    programming: request.body.university.programming,
+    data: request.body.university.data,
+    ml: request.body.university.ml,
+    grade: request.body.mtech.grade,
+    aalgo: request.body.mtech.aalgo,
+    aos: request.body.mtech.aos,
+    cn: request.body.mtech.cn,
+    dc: request.body.mtech.dc,
   });
   newUserDetails.save((err) => {
     if (err) return console.error(err);

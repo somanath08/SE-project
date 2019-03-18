@@ -1,94 +1,152 @@
-<mat-card class="form-card"
-  ><mat-horizontal-stepper linear>
-    <mat-step [stepControl]="matriculation">
-      <form [formGroup]="matriculation">
-        <ng-template matStepLabel>Matriculation</ng-template>
-        <mat-form-field appearance="outline" class="margin">
-          <mat-label>Percentage</mat-label>
-          <input
-            matInput
-            placeholder=""
-            formControlName="percentage"
-            required
-          />
-          <mat-icon matSuffix>face</mat-icon
-          ><mat-error>
-            Enter a valid percentage
-          </mat-error>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="puc">
-      <form [formGroup]="puc">
-        <ng-template matStepLabel>Pre-University Course</ng-template>
-        <mat-form-field appearance="outline" class="margin">
-          <mat-label>Percentage</mat-label>
-          <input
-            matInput
-            placeholder=""
-            formControlName="percentage"
-            required
-            minlength="4"
-          />
-          <mat-icon matSuffix>face</mat-icon
-          ><mat-error>
-            Enter a valid percentage
-          </mat-error> </mat-form-field
-        ><br />
-        <mat-form-field appearance="outline" class="margin">
-          <mat-label>Stream</mat-label>
-          <mat-select placeholder="Stream" formControlName="stream" required>
-            <mat-option value="MPC">MPC</mat-option>
-            <mat-option value="BPC">BPC</mat-option>
-          </mat-select>
-          <mat-icon matSuffix>face</mat-icon
-          ><mat-error>
-            Select a valid stream
-          </mat-error>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="university">
-      <form [formGroup]="university">
-        <ng-template matStepLabel>University</ng-template>
-        <mat-form-field appearance="outline" class="margin">
-          <mat-label>Percentage</mat-label>
-          <input
-            matInput
-            placeholder=""
-            formControlName="percentage"
-            required
-            minlength="4"
-          />
-          <mat-icon matSuffix>face</mat-icon
-          ><mat-error>
-            Enter a valid percentage
-          </mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field appearance="outline" class="margin">
-          <mat-label>Stream</mat-label>
-          <mat-select placeholder="Stream" formControlName="stream" required>
-            <mat-option value="MPC">CSE</mat-option>
-            <mat-option value="BPC">Others</mat-option>
-          </mat-select>
-          <mat-icon matSuffix>face</mat-icon
-          ><mat-error>
-            Select a valid stream
-          </mat-error>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-      </form>
-    </mat-step>
-  </mat-horizontal-stepper>
-</mat-card>
+<form [formGroup]="acadForm">
+  <mat-card class="form-card"
+    ><mat-horizontal-stepper linear>
+      <mat-step stepControlName="puc">
+        <form formGroupName="puc">
+          <ng-template matStepLabel>Pre-University Course</ng-template>
+          <mat-form-field appearance="outline" class="margin">
+            <mat-label>User</mat-label>
+            <input matInput placeholder="" formControlName="user" required />
+          </mat-form-field>
+          <br /><br />
+          <mat-label>Have you done Programming until class 12th?</mat-label
+          ><br /><br />
+          <mat-radio-group formControlName="stream">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <div>
+            <button
+              mat-button
+              matStepperNext
+              (click)="nextClick()"
+              type="button"
+            >
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step stepControlName="university">
+        <form formGroupName="university">
+          <ng-template matStepLabel>University</ng-template>
+          <mat-label>Was your stream Computer Science?</mat-label><br /><br />
+          <mat-radio-group formControlName="stream">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done Algorithms course?</mat-label><br /><br />
+          <mat-radio-group formControlName="algo">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done a Databases course?</mat-label><br /><br />
+          <mat-radio-group formControlName="database">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done Operating Systems course?</mat-label
+          ><br /><br />
+          <mat-radio-group formControlName="os">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done a Networks course?</mat-label><br /><br />
+          <mat-radio-group formControlName="networks">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done Programming course?</mat-label><br /><br />
+          <mat-radio-group formControlName="programming">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done a Data mining course?</mat-label><br /><br />
+          <mat-radio-group formControlName="data">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done Machine Learning?</mat-label><br /><br />
+          <mat-radio-group formControlName="ml">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step stepControlName="mtech">
+        <form formGroupName="mtech">
+          <ng-template matStepLabel>M. Tech</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label>Grade</mat-label>
+            <input
+              matInput
+              placeholder=""
+              formControlName="grade"
+              required
+            /> </mat-form-field
+          ><br /><br />
+          <br /><br />
+          <mat-label>Have you done Advanced Algorithms course?</mat-label
+          ><br /><br />
+          <mat-radio-group formControlName="aalgo">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done Advanced Operating Systems course?</mat-label
+          ><br /><br />
+          <mat-radio-group formControlName="aos">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done Computer Networks?</mat-label><br /><br />
+          <mat-radio-group formControlName="cn">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <mat-label>Have you done Distrinuted Computing?</mat-label
+          ><br /><br />
+          <mat-radio-group formControlName="dc">
+            <mat-radio-button [value]="true">Yes</mat-radio-button>
+            <mat-radio-button [value]="false"
+              >No</mat-radio-button
+            > </mat-radio-group
+          ><br /><br />
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button type="button" (click)="onSubmit()">
+              Submit
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card>
+</form>
