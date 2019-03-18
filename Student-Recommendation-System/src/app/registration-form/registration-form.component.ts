@@ -50,6 +50,7 @@ export class RegistrationFormComponent {
     this.registerService.registeration(this.profileForm.value).subscribe((status) => {
       if (status === 'Saved') {
         console.log(status);
+        this.router.navigate(['/login']);
       }
     });
   }

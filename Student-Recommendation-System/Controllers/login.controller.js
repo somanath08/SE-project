@@ -10,7 +10,8 @@ exports.verifyCredentials = (request, response) => {
     if (doc) {
       console.log(`here1 ${doc}`);
       if (doc.password === request.body.password) {
-        return response.send('Success');
+        if (doc.hasDetails) return response.send('Success');
+        return response.send('acad');
       }
     }
     return response.send('Invalid');

@@ -30,6 +30,8 @@ export class LoginComponent {
       console.log(status);
       if (status === 'Success') {
         this.router.navigate([`/dashboard/${this.profileForm.get('user').value}`]);
+      } else if (status === 'acad') {
+        this.router.navigate(['/acadform']);
       }
     });
   }

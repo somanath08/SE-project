@@ -3,8 +3,6 @@
 import Users from '../Models/Users.model';
 import Tokens from '../Models/Tokens.model';
 
-const mongoose = require('mongoose');
-
 exports.confirm = (request, response) => {
   console.log(request.params.token);
   Tokens.findOne({ token: request.params.token }).exec((err, token) => {
@@ -23,7 +21,8 @@ exports.confirm = (request, response) => {
             if (err1) {
               return response.status(500).send({ msg: err.message });
             }
-            response.status(200).send('The account has been verified. Please log in.');
+            response.redirect('http://localhost:4200/login');
+            // response.status(200).send('The account has been verified. Please log in.');
           });
         }
       });

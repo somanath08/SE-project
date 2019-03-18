@@ -8,6 +8,7 @@ const UsersSchema = new mongoose.Schema({
   Mobile: String,
   email: String,
   isVerified: { type: Boolean, default: false },
+  hasDetails: { type: Boolean, default: false },
 });
 const Users = mongoose.model('Users', UsersSchema, 'Users');
 
