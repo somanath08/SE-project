@@ -3,15 +3,11 @@
 import Users from '../Models/Users.model';
 
 exports.getDetails = (request, response) => {
-  console.log(`${JSON.stringify(request.body, null, 4)}`);
-  Users.findOne({ user: request.body.user }).exec((err, doc) => {
+  console.log(`${JSON.stringify(request.params.user, null, 4)}`);
+  Users.findOne({ user: request.params.user }).exec((err, doc) => {
+    console.log(doc);
     if (err) console.log('An error cooured while verifying');
-    if (doc) {
-      console.log(`here1 ${doc}`);
-      if (doc.password === request.body.password) {
-        return response.send(doc);
-      }
-    }
+    if (doc) return response.send(doc);
     return response.send({});
   });
 };

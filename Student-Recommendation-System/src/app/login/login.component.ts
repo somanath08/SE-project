@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
@@ -29,7 +29,7 @@ export class LoginComponent {
     this.loginService.verifyCredentials(this.profileForm.value).subscribe((status) => {
       console.log(status);
       if (status === 'Success') {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate([`/dashboard/${this.profileForm.get('user').value}`]);
       }
     });
   }

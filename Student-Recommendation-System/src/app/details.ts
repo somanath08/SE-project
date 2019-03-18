@@ -5,7 +5,7 @@ export class Details {
 
   lastName: String;
 
-  Mobile: String;
+  mobile: String;
 
   email: String;
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Details } from './Details';
+import { Details } from './details';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { Details } from './Details';
 export class DashboardService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:3000/dashboard/:id';
+  private apiUrl = 'http://localhost:3000/dashboard/details/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,8 +23,8 @@ export class DashboardService {
   };
 
   // URL to web api
-  getDashboard(): Observable<Details> {
-    return this.http.get<Details>(this.apiUrl, { headers: this.httpOptions.headers }).pipe(
+  getDashboard(id: any): Observable<Details> {
+    return this.http.get<Details>(this.apiUrl + id, { headers: this.httpOptions.headers }).pipe(
       tap(_ => console.log('Got response')),
       catchError(this.handleError<Details>('getDashboard')),
     );
