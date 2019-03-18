@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const loginRouter = require('./Routes/login.route');
 const registerRouter = require('./Routes/register.route');
 const acadRouter = require('./Routes/acad.route');
+const dashboardRouter = require('./Routes/dashboard.route');
 // Server
 const app = express();
 const distPath = path.join(__dirname, '/Views');
@@ -26,6 +27,7 @@ db.once('open', () => {
   app.use('/login', loginRouter);
   app.use('/register', registerRouter);
   app.use('/academic', acadRouter);
+  app.use('/dashboard', dashboardRouter);
 
   // app.get("/", (req, res) => {
   //   res.sendFile(distPath + "index.html");
