@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-const callback = require('../Controllers/login.controller');
+const callback = require('../Controllers/confirmation.controller');
 
 const router = Router();
-router.post('/verify', callback.verifyCredentials);
+router.get('/:token', callback.confirm);
 module.exports = router;

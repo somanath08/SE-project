@@ -3,14 +3,16 @@
 import Users from '../Models/Users.model';
 import Tokens from '../Models/Tokens.model';
 
+const mongoose = require('mongoose');
+
 exports.confirm = (request, response) => {
-  console.log(`${JSON.stringify(request.params.token, null, 4)}`);
-  Tokens.findOne({ _id: request.params.token }).exec((err, token) => {
+  console.log(request.params.token);
+  Tokens.findOne({ token: request.params.token }).exec((err, token) => {
     console.log(token);
-    if (err) console.log('An error cooured while verifying');
+    if (err) console.log(err.message);
     if (token) {
       // eslint-disable-next-line no-underscore-dangle
-      Users.findOne({ _id: token._userId }).exec((errUser, user) => {
+      Users.findById(token.userId).exec((errUser, user) => {
         console.log(user);
         if (errUser) console.log('An error cooured while verifying');
         if (user) {

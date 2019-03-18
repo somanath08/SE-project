@@ -3,7 +3,9 @@
 import Users from '../Models/Users.model';
 import Tokens from '../Models/Tokens.model';
 
+require('dotenv').config();
 const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 exports.addUser = (request, response) => {
   const newUser = new Users({
@@ -18,7 +20,7 @@ exports.addUser = (request, response) => {
     if (err) return console.error(err);
     const token = new Tokens({
       // eslint-disable-next-line no-underscore-dangle
-      _userId: newUser._id,
+      userId: newUser._id,
       token: crypto.randomBytes(16).toString('hex'),
     });
     // eslint-disable-next-line consistent-return
@@ -28,13 +30,15 @@ exports.addUser = (request, response) => {
       const message = `${'Hello,\n\n'
         + 'Please verify your account by clicking the link: \nhttp://'}${
         request.headers.host
-      }/confirmation/${token.token}.\n`;
+      }/confirm/${token.token}.\n`;
       const to = newUser.email;
-      const smtpTransport = nodemailer.createTransport(
-        `smtps://${process.env.USER}%40gmail.com:${encodeURIComponent(
-          process.env.PASS,
-        )}@smtp.gmail.com:465`,
-      );
+      const smtpTransport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'k.saisomanath@gmail.com',
+          pass: process.env.PASS,
+        },
+      });
 
       const mailOptions = {
         from,
