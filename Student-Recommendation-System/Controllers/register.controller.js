@@ -10,7 +10,7 @@ const crypto = require('crypto');
 exports.addUser = (request, response) => {
   const newUser = new Users({
     user: request.body.user,
-    password: request.body.password,
+    password: request.body.pass.password,
     email: request.body.email,
     firstName: request.body.firstName,
     lastName: request.body.lastName,

@@ -29,34 +29,41 @@
         Enter a valid user name
       </mat-error> </mat-form-field
     ><br />
-    <mat-form-field appearance="outline" class="margin">
-      <mat-label>Password</mat-label>
-      <input
-        matInput
-        placeholder=""
-        type="password"
-        formControlName="password"
-        required
-      />
-      <mat-icon matSuffix>lock</mat-icon>
-      <mat-error>
-        Enter a valid password
-      </mat-error></mat-form-field
-    ><br />
-    <mat-form-field appearance="outline" class="margin">
-      <mat-label>Confirm</mat-label>
-      <input
-        matInput
-        placeholder=""
-        type="password"
-        formControlName="confirm"
-        required
-      />
-      <mat-icon matSuffix>lock</mat-icon>
-      <mat-error>
-        This password should match the passowrd that was previously entered
-      </mat-error></mat-form-field
-    ><br />
+    <div formGroupName="pass">
+      <mat-form-field appearance="outline" class="margin">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder=""
+          type="password"
+          formControlName="password"
+          required
+        />
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error>
+          Enter a valid password
+        </mat-error></mat-form-field
+      ><br />
+      <mat-form-field appearance="outline" class="margin">
+        <mat-label>Confirm</mat-label>
+        <input
+          matInput
+          placeholder=""
+          type="password"
+          formControlName="confirm"
+          required
+        />
+        <mat-icon matSuffix>lock</mat-icon> </mat-form-field
+      ><br />
+      <mat-error
+        *ngIf="
+          this.profileForm.get('pass').get('password').valid &&
+          this.profileForm.get('pass').get('confirm').valid &&
+          this.profileForm.get('pass').invalid
+        "
+        >The passwords should match</mat-error
+      >
+    </div>
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Email</mat-label>
       <input
