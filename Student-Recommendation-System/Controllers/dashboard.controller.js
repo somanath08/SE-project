@@ -7,7 +7,10 @@ exports.getDetails = (request, response) => {
   Users.findOne({ user: request.params.user }).exec((err, doc) => {
     console.log(doc);
     if (err) console.log('An error cooured while verifying');
-    if (doc) return response.send(doc);
+    if (doc) {
+      return response.send(doc);
+    }
     return response.send({});
   });
 };
+// gnbmjdmlsstwnotf;
