@@ -29,8 +29,8 @@
         Enter a valid password
       </mat-error></mat-form-field
     ><br />
-    <mat-error *ngIf="this.badCredentials">Invalid credentials</mat-error>
-      <br />
+    <mat-error *ngIf="message">{{ message }}</mat-error>
+    <br />
     <button mat-raised-button color="primary" [disabled]="!profileForm.valid">
       Login
     </button>

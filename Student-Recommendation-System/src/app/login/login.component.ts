@@ -15,7 +15,8 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
-  badCredentails = false;
+  message = '';
+
   profileForm = new FormGroup({
     user: new FormControl('', [
       Validators.required,
@@ -33,8 +34,10 @@ export class LoginComponent {
         this.router.navigate([`/dashboard/${this.profileForm.get('user').value}`]);
       } else if (status === 'acad') {
         this.router.navigate(['/acadform']);
+      } else if (status === 'Unverified') {
+        this.message = 'Please verify your account';
       } else {
-        this.badCredentials = true;
+        this.message = 'Invalid credentials';
       }
     });
   }

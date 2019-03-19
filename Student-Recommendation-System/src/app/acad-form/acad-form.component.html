@@ -1,6 +1,6 @@
 <form [formGroup]="acadForm">
   <mat-card class="form-card"
-    ><mat-horizontal-stepper linear>
+    ><mat-horizontal-stepper [linear]="True">
       <mat-step stepControlName="puc">
         <form formGroupName="puc">
           <ng-template matStepLabel>Pre-University Course</ng-template>
@@ -91,7 +91,14 @@
           ><br /><br />
           <div>
             <button mat-button matStepperPrevious type="button">Back</button>
-            <button mat-button matStepperNext type="button" [disabled]="acadForm.get('university').invalid">Next</button>
+            <button
+              mat-button
+              matStepperNext
+              type="button"
+              [disabled]="acadForm.get('university').invalid"
+            >
+              Next
+            </button>
           </div>
         </form>
       </mat-step>
@@ -141,7 +148,12 @@
           ><br /><br />
           <div>
             <button mat-button matStepperPrevious type="button">Back</button>
-            <button mat-button type="button"  [disabled]="acadForm.invalid" (click)="onSubmit()">
+            <button
+              mat-button
+              type="button"
+              [disabled]="acadForm.invalid"
+              (click)="onSubmit()"
+            >
               Submit
             </button>
           </div>

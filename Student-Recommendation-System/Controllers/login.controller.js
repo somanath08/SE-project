@@ -11,7 +11,8 @@ exports.verifyCredentials = (request, response) => {
       console.log(`here1 ${doc}`);
       if (doc.password === request.body.password) {
         if (doc.hasDetails) return response.send('Success');
-        return response.send('acad');
+        if (doc.isVerified) return response.send('acad');
+        return response.send('Unverified');
       }
     }
     return response.send('Invalid');
