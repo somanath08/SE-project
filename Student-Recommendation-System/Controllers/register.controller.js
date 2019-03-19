@@ -26,7 +26,7 @@ exports.addUser = (request, response) => {
     // eslint-disable-next-line consistent-return
     token.save((errToken) => {
       if (errToken) return console.error(errToken);
-      const from = 'k.saisomanath@gmail.com';
+      const from = `${process.env.USER}@gmail.com`;
       const message = `${'Hello,\n\n'
         + 'Please verify your account by clicking the link: \nhttp://'}${
         request.headers.host
@@ -35,7 +35,7 @@ exports.addUser = (request, response) => {
       const smtpTransport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'k.saisomanath@gmail.com',
+          user: `${process.env.USER}@gmail.com`,
           pass: process.env.PASS,
         },
       });
