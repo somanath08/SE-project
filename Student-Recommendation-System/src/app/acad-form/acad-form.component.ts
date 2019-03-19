@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder, FormGroup, FormArray, FormControl,
+  FormBuilder, FormGroup, FormArray, FormControl, Validators,
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -14,27 +14,27 @@ import { AcadFormService } from '../acad-form.service';
 export class AcadFormComponent {
   acadForm = this.fb.group({
     puc: this.fb.group({
-      user: [''],
-      stream: [''],
+      user: ['', Validators.required],
+      stream: ['', Validators.required],
     }),
 
     university: this.fb.group({
-      stream: [''],
-      algo: [''],
-      os: [''],
-      database: [''],
-      networks: [''],
-      programming: [''],
-      data: [''],
-      ml: [''],
+      stream: ['', Validators.required],
+      algo: ['', Validators.required],
+      os: ['', Validators.required],
+      database: ['', Validators.required],
+      networks: ['', Validators.required],
+      programming: ['', Validators.required],
+      data: ['', Validators.required],
+      ml: ['', Validators.required],
     }),
 
     mtech: this.fb.group({
-      grade: [''],
-      aalgo: [''],
-      aos: [''],
-      cn: [''],
-      dc: [''],
+      grade: ['', Validators.required],
+      aalgo: ['', Validators.required],
+      aos: ['', Validators.required],
+      cn: ['', Validators.required],
+      dc: ['', Validators.required],
     }),
   });
 

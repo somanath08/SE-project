@@ -11,9 +11,9 @@
           <br /><br />
           <mat-label>Have you done Programming until class 12th?</mat-label
           ><br /><br />
-          <mat-radio-group formControlName="stream">
+          <mat-radio-group formControlName="stream" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
@@ -21,7 +21,7 @@
             <button
               mat-button
               matStepperNext
-              (click)="nextClick()"
+              [disabled]="acadForm.get('puc').invalid"
               type="button"
             >
               Next
@@ -33,65 +33,65 @@
         <form formGroupName="university">
           <ng-template matStepLabel>University</ng-template>
           <mat-label>Was your stream Computer Science?</mat-label><br /><br />
-          <mat-radio-group formControlName="stream">
+          <mat-radio-group formControlName="stream" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done Algorithms course?</mat-label><br /><br />
-          <mat-radio-group formControlName="algo">
+          <mat-radio-group formControlName="algo" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done a Databases course?</mat-label><br /><br />
-          <mat-radio-group formControlName="database">
+          <mat-radio-group formControlName="database" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done Operating Systems course?</mat-label
           ><br /><br />
-          <mat-radio-group formControlName="os">
+          <mat-radio-group formControlName="os" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done a Networks course?</mat-label><br /><br />
-          <mat-radio-group formControlName="networks">
+          <mat-radio-group formControlName="networks" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done Programming course?</mat-label><br /><br />
-          <mat-radio-group formControlName="programming">
+          <mat-radio-group formControlName="programming" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done a Data mining course?</mat-label><br /><br />
-          <mat-radio-group formControlName="data">
+          <mat-radio-group formControlName="data" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done Machine Learning?</mat-label><br /><br />
-          <mat-radio-group formControlName="ml">
+          <mat-radio-group formControlName="ml" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <div>
             <button mat-button matStepperPrevious type="button">Back</button>
-            <button mat-button matStepperNext type="button">Next</button>
+            <button mat-button matStepperNext type="button" [disabled]="acadForm.get('university').invalid">Next</button>
           </div>
         </form>
       </mat-step>
@@ -110,38 +110,38 @@
           <br /><br />
           <mat-label>Have you done Advanced Algorithms course?</mat-label
           ><br /><br />
-          <mat-radio-group formControlName="aalgo">
+          <mat-radio-group formControlName="aalgo" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done Advanced Operating Systems course?</mat-label
           ><br /><br />
-          <mat-radio-group formControlName="aos">
+          <mat-radio-group formControlName="aos" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done Computer Networks?</mat-label><br /><br />
-          <mat-radio-group formControlName="cn">
+          <mat-radio-group formControlName="cn" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <mat-label>Have you done Distrinuted Computing?</mat-label
           ><br /><br />
-          <mat-radio-group formControlName="dc">
+          <mat-radio-group formControlName="dc" required>
             <mat-radio-button [value]="true">Yes</mat-radio-button>
-            <mat-radio-button [value]="false"
+            <mat-radio-button [value]="false" class="margin"
               >No</mat-radio-button
             > </mat-radio-group
           ><br /><br />
           <div>
             <button mat-button matStepperPrevious type="button">Back</button>
-            <button mat-button type="button" (click)="onSubmit()">
+            <button mat-button type="button" (click)="onSubmit" [disabled]="acadForm.get('mtech').invalid">
               Submit
             </button>
           </div>

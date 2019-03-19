@@ -80,7 +80,7 @@
     ><br />
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Mobile</mat-label>
-      <input matInput placeholder="" formControlName="mobile" />
+      <input matInput placeholder="" formControlName="mobile" (keypress)="numberOnly($event)"/>
       <mat-icon matSuffix>phone</mat-icon>
       <mat-error>
         Enter a valid mobile number
