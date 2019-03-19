@@ -13,9 +13,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FloatCourseComponent } from './float-course/float-course.component';
 
 @NgModule({
-  declarations: [AppComponent, RegistrationFormComponent, AcadFormComponent, LoginComponent, DashboardComponent],
+  declarations: [AppComponent, RegistrationFormComponent, AcadFormComponent, LoginComponent, DashboardComponent, FloatCourseComponent],
   imports: [
   BrowserModule,
   AppRoutingModule,
