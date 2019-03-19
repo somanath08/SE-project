@@ -15,6 +15,7 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
+  badCredentails = false;
   profileForm = new FormGroup({
     user: new FormControl('', [
       Validators.required,
@@ -32,6 +33,8 @@ export class LoginComponent {
         this.router.navigate([`/dashboard/${this.profileForm.get('user').value}`]);
       } else if (status === 'acad') {
         this.router.navigate(['/acadform']);
+      } else {
+        this.badCredentials = true;
       }
     });
   }
