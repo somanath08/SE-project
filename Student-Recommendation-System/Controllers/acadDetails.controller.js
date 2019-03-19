@@ -25,7 +25,7 @@ exports.addAcadDetails = (request, response) => {
   });
   newUserDetails.save((err) => {
     if (err) return console.error(err);
-    Users.findOne({ user: request.body.user }).exec((err1, doc) => {
+    Users.findOne({ user: request.body.puc.user }).exec((err1, doc) => {
       if (err1) console.log(err1.message);
       if (doc) {
         console.log(`here1 ${doc}`);
