@@ -14,6 +14,7 @@ exports.verifyCredentials = (request, response) => {
         if (doc.isVerified) return response.send('acad');
         return response.send('Unverified');
       }
+      return response.send('Bad Credentials');
     }
     return response.send('Invalid');
   });

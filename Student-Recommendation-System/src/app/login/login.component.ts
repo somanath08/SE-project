@@ -36,6 +36,8 @@ export class LoginComponent {
         this.router.navigate(['/acadform']);
       } else if (status === 'Unverified') {
         this.message = 'Please verify your account';
+      } else if (status === 'Invalid') {
+        this.message = 'Re-register your account';
       } else {
         this.message = 'Invalid credentials';
       }
