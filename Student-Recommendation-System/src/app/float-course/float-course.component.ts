@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Course } from '../course-details';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-float-course',
   templateUrl: './float-course.component.html',
@@ -12,8 +14,19 @@ export class FloatCourseComponent{
   ngOnInit() {
   }
   course : Course[]=[
-    {value: 'lab-0', viewValue: 'Lab'},
-    {value: 'theory-1', viewValue: 'Theory'},
+    {value: 'lab', viewValue: 'Lab'},
+    {value: 'theory', viewValue: 'Theory'},
   ];
-
+  credits : Course[]=[
+    {value: '2', viewValue: 'Two'},
+    {value: '3', viewValue: 'Three'},
+    {value: '4', viewValue: 'Four'},
+  ];
+  profileForm = new FormGroup({
+    coursename: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[A-Z||a-z]$/),
+    ]),
+    password: new FormControl('', [Validators.required]),
+  });
 }

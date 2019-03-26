@@ -1,42 +1,52 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <mat-card class="form-card">
-    <mat-card-title class="heading">Login</mat-card-title>
+    <mat-card-title class="heading">Float-Course</mat-card-title>
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Course Type</mat-label>
       <mat-select>
-        <mat-option *ngFor="Course-type" [value]="course.value">
-          {{course.viewValue}}
+        <mat-option *ngFor="let c of course" [value]="c.value">
+          {{c.viewValue}}
         </mat-option>
       </mat-select>
        </mat-form-field
     ><br />
     <mat-form-field appearance="outline" class="margin">
-      <mat-label>Password</mat-label>
+      <mat-label>Course Name</mat-label>
       <input
         matInput
         placeholder=""
-        type="password"
-        formControlName="password"
+        formControlName="coursename"
         required
       />
-      <mat-icon matSuffix>lock</mat-icon>
       <mat-error>
-        Enter a valid password
+        Enter a valid course-name
       </mat-error></mat-form-field
     ><br />
     <mat-error *ngIf="message">{{ message }}</mat-error>
+    <mat-form-field appearance="outline" class="margin">
+    <mat-label>Credits</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let cred of credits" [value]="cred.value">
+        {{cred.viewValue}}
+      </mat-option>
+    </mat-select>    
+    </mat-form-field>
     <br />
+    <div>
+      <mat-label>Prerequisites</mat-label>
+        <input 
+        matInput
+        formControlName="prerequisite"
+        required
+        />
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button (click)="add(prerequisite.value); prerequisite.value=''">
+        Add
+      </button>
+    </div>
     <button mat-raised-button color="primary" [disabled]="!profileForm.valid">
-      Login
+      Float
     </button>
-    <button
-      mat-raised-button
-      type="button"
-      color="primary"
-      class="pad"
-      routerLink="/registration"
-    >
-      Register
-    </button>
+    
   </mat-card>
 </form>
