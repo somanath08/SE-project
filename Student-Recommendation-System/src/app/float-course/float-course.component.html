@@ -3,7 +3,7 @@
     <mat-card-title class="heading">Float-Course</mat-card-title>
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Course Type</mat-label>
-      <mat-select>
+      <mat-select formControlName="courseType">
         <mat-option *ngFor="let c of course" [value]="c.value">
           {{c.viewValue}}
         </mat-option>
@@ -25,25 +25,23 @@
     <mat-error *ngIf="message">{{ message }}</mat-error>
     <mat-form-field appearance="outline" class="margin">
     <mat-label>Credits</mat-label>
-    <mat-select>
+    <mat-select formControlName="credits">
       <mat-option *ngFor="let cred of credits" [value]="cred.value">
         {{cred.viewValue}}
       </mat-option>
     </mat-select>    
     </mat-form-field>
     <br />
-    <mat-form-field appearance="outline" class="margin">
-      <mat-selection-list #pre formControlName="prerequisite">
-        
+    <mat-form-field appearance="outline" class="margin">      
+      <mat-selection-list #pre>        
         <mat-list-option *ngFor="let pre of prerequisites">
-          {{pre}}
+          {{pre}}          
         </mat-list-option>
       </mat-selection-list>      
     </mat-form-field>
     <br />
     <button mat-raised-button color="primary" [disabled]="!profileForm.valid">
       Float
-    </button>
-    
+    </button>    
   </mat-card>
 </form>

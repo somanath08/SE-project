@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Course } from '../course-details';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { FloatCourseService } from '../float-course.service';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-float-course',
   templateUrl: './float-course.component.html',
@@ -9,7 +10,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class FloatCourseComponent{
 
-  constructor() { }
+  constructor( 
+    private floatCourseService: FloatCourseService,
+    private router: Router,
+    ) {
+   }
 
   ngOnInit() {
   }
@@ -25,11 +30,23 @@ export class FloatCourseComponent{
     {value: '4', viewValue: 'Four'},
   ];
   profileForm = new FormGroup({
+    courseType: new FormControl(''),
     coursename: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[A-Z||a-z]$/),
     ]),
-    prerequisite: new FormControl(''),
-    
-  });
+    credits: new FormControl(''),
+    //prerequisite: new FormControl(''),
+   });
+   onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.log(this.profileForm.value);
+    this.floatCourseService.floatcourse(this.profileForm.value).subscribe((status) => {
+      if (status === 'Saved') {
+        console.log(status);
+        this.router.navigate(['/dashboard']);
+      }
+    });
+  }
+  
 }
