@@ -17,6 +17,8 @@ export class FloatCourseComponent{
     {value: 'lab', viewValue: 'Lab'},
     {value: 'theory', viewValue: 'Theory'},
   ];
+  prerequisites : String[]=['Programming', 'Algorithms and DS', 'Computer Networks', 'Operating System', 'Distributed Computing', 'Parallel Computing'];
+
   credits : Course[]=[
     {value: '2', viewValue: 'Two'},
     {value: '3', viewValue: 'Three'},
@@ -27,6 +29,7 @@ export class FloatCourseComponent{
       Validators.required,
       Validators.pattern(/^[A-Z||a-z]$/),
     ]),
-    password: new FormControl('', [Validators.required]),
+    prerequisite: new FormControl(''),
+    
   });
 }

@@ -32,18 +32,15 @@
     </mat-select>    
     </mat-form-field>
     <br />
-    <div>
-      <mat-label>Prerequisites</mat-label>
-        <input 
-        matInput
-        formControlName="prerequisite"
-        required
-        />
-      <!-- (click) passes input value to add() and then clears the input -->
-      <button (click)="add(prerequisite.value); prerequisite.value=''">
-        Add
-      </button>
-    </div>
+    <mat-form-field appearance="outline" class="margin">
+      <mat-selection-list #pre formControlName="prerequisite">
+        
+        <mat-list-option *ngFor="let pre of prerequisites">
+          {{pre}}
+        </mat-list-option>
+      </mat-selection-list>      
+    </mat-form-field>
+    <br />
     <button mat-raised-button color="primary" [disabled]="!profileForm.valid">
       Float
     </button>

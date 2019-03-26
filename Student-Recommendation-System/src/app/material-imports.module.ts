@@ -20,6 +20,7 @@ import {
   MatOption,
   MatSelectModule,
   MatRadioModule,
+  MatListModule,
 } from '@angular/material';
 
 @NgModule({
@@ -33,6 +34,7 @@ import {
   MatStepperModule,
   MatSelectModule,
   MatRadioModule,
+  MatListModule,
   ],
   exports: [
   MatFormFieldModule,
@@ -43,6 +45,7 @@ import {
   MatStepperModule,
   MatSelectModule,
   MatRadioModule,
+  MatListModule,
   ],
   })
 export class MaterialImportsModule {}
