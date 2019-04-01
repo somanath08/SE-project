@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <p *ngIf="data.valid">{{ data.message }}</p>
+  <mat-error *ngIf="!data.valid">{{ data.message }}</mat-error>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick()">Okay</button>
+</div>
