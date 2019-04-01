@@ -3,45 +3,40 @@
     <mat-card-title class="heading">Float-Course</mat-card-title>
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Course Type</mat-label>
-      <mat-select formControlName="courseType">
+      <mat-select formControlName="courseType" required>
         <mat-option *ngFor="let c of course" [value]="c.value">
-          {{c.viewValue}}
+          {{ c.viewValue }}
         </mat-option>
-      </mat-select>
-       </mat-form-field
+      </mat-select> </mat-form-field
     ><br />
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Course Name</mat-label>
-      <input
-        matInput
-        placeholder=""
-        formControlName="coursename"
-        required
-      />
+      <input matInput placeholder="" formControlName="coursename" required />
       <mat-error>
         Enter a valid course-name
       </mat-error></mat-form-field
     ><br />
     <mat-error *ngIf="message">{{ message }}</mat-error>
     <mat-form-field appearance="outline" class="margin">
-    <mat-label>Credits</mat-label>
-    <mat-select formControlName="credits">
-      <mat-option *ngFor="let cred of credits" [value]="cred.value">
-        {{cred.viewValue}}
-      </mat-option>
-    </mat-select>    
+      <mat-label>Credits</mat-label>
+      <mat-select formControlName="credits" required>
+        <mat-option *ngFor="let cred of credits" [value]="cred.value">
+          {{ cred.viewValue }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <br />
-    <mat-form-field appearance="outline" class="margin">      
-      <mat-selection-list #pre>        
-        <mat-list-option *ngFor="let pre of prerequisites">
-          {{pre}}          
-        </mat-list-option>
-      </mat-selection-list>      
+    <mat-form-field>
+      <mat-label>Prerequisites</mat-label>
+      <mat-select #pre formControlName="prerequisite" multiple>
+        <mat-option *ngFor="let pre of prerequisites" [value]="pre">
+          {{ pre }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <br />
     <button mat-raised-button color="primary" [disabled]="!profileForm.valid">
       Float
-    </button>    
+    </button>
   </mat-card>
 </form>
