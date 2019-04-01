@@ -30,7 +30,7 @@ export class FloatCourseComponent {
 
   courseForm = new FormGroup({
     courseType: new FormControl('', Validators.required),
-    coursename: new FormControl('', [
+    courseName: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[A-Z||a-z||0-9||\s||-]+$/),
     ]),
