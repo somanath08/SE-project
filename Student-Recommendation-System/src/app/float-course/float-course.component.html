@@ -2,6 +2,13 @@
   <mat-card class="form-card">
     <mat-card-title class="heading">Float-Course</mat-card-title>
     <mat-form-field appearance="outline" class="margin">
+      <mat-label>Faculty ID</mat-label>
+      <input matInput placeholder="" formControlName="facId" required />
+      <mat-error>
+        Enter a valid ID
+      </mat-error> </mat-form-field
+    ><br />
+    <mat-form-field appearance="outline" class="margin">
       <mat-label>Course Type</mat-label>
       <mat-select formControlName="courseType" required>
         <mat-option *ngFor="let c of course" [value]="c.value">
