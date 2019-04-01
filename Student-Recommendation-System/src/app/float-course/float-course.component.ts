@@ -11,8 +11,6 @@ import { FloatCourseService } from '../float-course.service';
 export class FloatCourseComponent {
   constructor(private floatCourseService: FloatCourseService, private router: Router) {}
 
-  ngOnInit() {}
-
   course: Course[] = [{ value: 'lab', viewValue: 'Lab' }, { value: 'theory', viewValue: 'Theory' }];
 
   prerequisites: String[] = [
@@ -30,7 +28,7 @@ export class FloatCourseComponent {
     { value: '4', viewValue: 'Four' },
   ];
 
-  profileForm = new FormGroup({
+  courseForm = new FormGroup({
     courseType: new FormControl('', Validators.required),
     coursename: new FormControl('', [
       Validators.required,
@@ -41,6 +39,7 @@ export class FloatCourseComponent {
   });
 
   onSubmit() {
-    console.log(this.profileForm.value);
+    console.log(this.courseForm.value);
+    this.floatCourseService.floatcourse(this.courseForm.value);
   }
 }
