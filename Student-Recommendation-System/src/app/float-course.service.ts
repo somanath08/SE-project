@@ -3,15 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
-  providedIn: 'root'
-})
+  providedIn: 'root',
+  })
 export class FloatCourseService {
-
   constructor(private http: HttpClient) {}
 
-   private apiUrl = 'http://localhost:3000/floatcourse/add';
+  private apiUrl = 'http://localhost:3000/course/add';
 
-   httpOptions = {
+  httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'my-auth-token',
@@ -20,6 +19,7 @@ export class FloatCourseService {
       'Access-Control-Allow-Origin': '*',
     }),
   };
+
   floatcourse(data: any): Observable<string> {
     return this.http
       .post(this.apiUrl, data, { headers: this.httpOptions.headers, responseType: 'text' })
@@ -28,6 +28,7 @@ export class FloatCourseService {
         catchError(this.handleError<string>('float', '')),
       );
   }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
