@@ -12,6 +12,7 @@ const registerRouter = require('./Routes/register.route');
 const acadRouter = require('./Routes/acad.route');
 const dashboardRouter = require('./Routes/dashboard.route');
 const confirmRouter = require('./Routes/confirmation.route');
+const courseRouter = require('./Routes/floatCourse.route');
 // Server
 const app = express();
 const distPath = path.join(__dirname, '/Views');
@@ -30,10 +31,7 @@ db.once('open', () => {
   app.use('/academic', acadRouter);
   app.use('/dashboard', dashboardRouter);
   app.use('/confirm', confirmRouter);
-
-  // app.get("/", (req, res) => {
-  //   res.sendFile(distPath + "index.html");
-  // });
+  app.use('/course', courseRouter);
 
   app.listen(process.env.PORT, () => {
     console.log(`listening on ${process.env.PORT}`);
