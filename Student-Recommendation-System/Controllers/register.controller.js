@@ -32,10 +32,11 @@ exports.addUser = (request, response) => {
         request.headers.host
       }/confirm/${token.token}.\n`;
       const to = newUser.email;
+      console.log(`${process.env.FROM_EMAIL}\n${process.env.PASS}`);
       const smtpTransport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: `${process.env.USER}@gmail.com`,
+          user: process.env.FROM_EMAIL,
           pass: process.env.PASS,
         },
       });
