@@ -12,10 +12,12 @@ const StudentSchema = new mongoose.Schema({
   data: Boolean,
   ml: Boolean,
   grade: Number,
-  aalgo: Boolean,
-  aos: Boolean,
-  cn: Boolean,
-  dc: Boolean,
+  pc: Number,
+  dc: Number,
+  cn: Number,
+  cg: Number,
+  nn: Number,
+  ip: Number,
 });
 const Students = mongoose.model('Student', StudentSchema, 'Students');
 
