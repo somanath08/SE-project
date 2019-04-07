@@ -31,10 +31,12 @@ export class AcadFormComponent {
 
     mtech: this.fb.group({
       grade: ['', Validators.required],
-      aalgo: ['', Validators.required],
-      aos: ['', Validators.required],
-      cn: ['', Validators.required],
+      pc: ['', Validators.required],
       dc: ['', Validators.required],
+      cn: ['', Validators.required],
+      cg: ['', Validators.required],
+      nn: ['', Validators.required],
+      ip: ['', Validators.required],
     }),
   });
 
