@@ -18,10 +18,12 @@ exports.addAcadDetails = (request, response) => {
     data: request.body.university.data,
     ml: request.body.university.ml,
     grade: request.body.mtech.grade,
-    aalgo: request.body.mtech.aalgo,
-    aos: request.body.mtech.aos,
-    cn: request.body.mtech.cn,
+    pc: request.body.mtech.pc,
     dc: request.body.mtech.dc,
+    cn: request.body.mtech.cn,
+    cg: request.body.mtech.cg,
+    nn: request.body.mtech.nn,
+    ip: request.body.mtech.ip,
   });
   newUserDetails.save((err) => {
     if (err) return console.error(err);
