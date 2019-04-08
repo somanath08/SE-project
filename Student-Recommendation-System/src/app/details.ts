@@ -1,4 +1,4 @@
-export class Details {
+export interface Details {
   user: String;
 
   firstName: String;
