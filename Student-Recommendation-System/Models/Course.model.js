@@ -6,7 +6,7 @@ const CourseSchema = new mongoose.Schema({
   courseName: String,
   courseId: String,
   credits: String,
-  prerequisites: [String],
+  prerequisites: String,
   registered: { type: [String], default: null },
   avgGrade: Number,
   semester: Number,

@@ -8,7 +8,9 @@ exports.addCourse = (request, response) => {
     courseType: request.body.courseType,
     courseName: request.body.coursename,
     credits: request.body.credits,
+    courseId: request.body.courseId,
     prerequisites: request.body.prerequisites,
+    semester: request.body.sem,
   });
   newCourse.save((err) => {
     if (err) return response.send(err);
