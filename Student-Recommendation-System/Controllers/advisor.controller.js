@@ -1,14 +1,45 @@
 // Controller to handle all login/* routes
 /* eslint-disable no-console */
 import Student from '../Models/Student.model';
+import Marks from '../Models/Marks.model';
 
 const courses = [
-  { id: 'pc', name: 'Parallel Computing', score: 0 },
-  { id: 'dc', name: 'Distributed Computing', score: 0 },
-  { id: 'cn', name: 'Computer Networks', score: 0 },
-  { id: 'cg', name: 'Cryptography', score: 0 },
-  { id: 'nn', name: 'Neural Networks', score: 0 },
-  { id: 'ip', name: 'Image Processing', score: 0 },
+  {
+    id: 'pc',
+    name: 'Parallel Computing',
+    score: 0,
+    avg: 6,
+  },
+  {
+    id: 'dc',
+    name: 'Distributed Computing',
+    score: 0,
+    avg: 6,
+  },
+  {
+    id: 'cn',
+    name: 'Computer Networks',
+    score: 0,
+    avg: 6,
+  },
+  {
+    id: 'cg',
+    name: 'Cryptography',
+    score: 0,
+    avg: 6,
+  },
+  {
+    id: 'nn',
+    name: 'Neural Networks',
+    score: 0,
+    avg: 6,
+  },
+  {
+    id: 'ip',
+    name: 'Image Processing',
+    score: 0,
+    avg: 6,
+  },
 ];
 
 function sortAccordingToScores(a, b) {
@@ -35,4 +66,18 @@ exports.getAdviceForSemStart = (request, response) => {
     }
   });
   return response.send(suggestions);
+};
+
+exports.getAdviceForSemMid = (request, response) => {
+  Marks.findOne({ user: request.params.id }).exec((err1, doc) => {
+    if (err1) console.log(err1.message);
+    if (doc) {
+      console.log(`here1 ${doc}`);
+      for (let i = 0; i < courses.length; i += 1) {
+        if (courses[i].id === doc.id) {
+          return courses[i].avg - doc.avg >= 3 ? response.send('leave') : response.send('stay');
+        }
+      }
+    }
+  });
 };
