@@ -1,0 +1,24 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.dashboard-card {
+  width: 800px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.heading {
+  margin: 20px;
+  text-align: center;
+}
