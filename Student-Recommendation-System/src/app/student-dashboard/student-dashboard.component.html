@@ -11,19 +11,16 @@
           Personal data
         </mat-panel-title>
         <mat-panel-description>
-          Type your name and age
+          View your personal details here
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-
-      <mat-form-field>
-        <input matInput placeholder="First name" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput type="number" min="1" placeholder="Age" />
-      </mat-form-field>
-
+      <div *ngIf="[!loading]">
+        Name : {{ details.firstName }} {{ details.lastName }}<br />
+        Email: {{ details.email }} <br />
+        Registration Id : {{ details.user }} <br />
+        Mobile: {{ details.mobile }} <br />
+      </div>
       <mat-action-row>
         <button mat-button color="primary" (click)="nextStep()">Next</button>
       </mat-action-row>
