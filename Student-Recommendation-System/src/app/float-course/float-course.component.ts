@@ -19,13 +19,12 @@ export class FloatCourseComponent {
 
   course: Course[] = [{ value: 'lab', viewValue: 'Lab' }, { value: 'theory', viewValue: 'Theory' }];
 
-  prerequisites: String[] = [
-    'Programming',
-    'Algorithms and DS',
-    'Computer Networks',
-    'Operating System',
-    'Distributed Computing',
-    'Parallel Computing',
+  prerequisites: Course[] = [
+    { value: 'programming', viewValue: 'programming' },
+    { value: 'algo', viewValue: 'Algorithms and DS' },
+    { value: 'cn', viewValue: 'Computer Networks' },
+    { value: 'dc', viewValue: 'Distributed Computing' },
+    { value: 'pc', viewValue: 'Parallel Computing' },
   ];
 
   credits: Course[] = [
@@ -42,7 +41,8 @@ export class FloatCourseComponent {
       Validators.pattern(/^[A-Z||a-z||0-9||\s||-]+$/),
     ]),
     courseId: new FormControl('', Validators.required),
-    credits: new FormControl(''),
+    credits: new FormControl('', Validators.required),
+    sem: new FormControl('', Validators.required),
     prerequisite: new FormControl(''),
   });
 

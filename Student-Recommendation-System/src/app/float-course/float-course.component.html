@@ -40,11 +40,23 @@
       </mat-select>
     </mat-form-field>
     <br />
+    <mat-form-field appearance="outline" class="margin">
+      <mat-label>Credits</mat-label>
+      <mat-select formControlName="credits" required>
+        <mat-option [value]="1">
+          1
+        </mat-option>
+        <mat-option [value]="2">
+          2
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
     <mat-form-field>
       <mat-label>Prerequisites</mat-label>
-      <mat-select #pre formControlName="prerequisite" multiple>
-        <mat-option *ngFor="let pre of prerequisites" [value]="pre">
-          {{ pre }}
+      <mat-select #pre formControlName="prerequisite">
+        <mat-option *ngFor="let pre of prerequisites" [value]="pre.value">
+          {{ pre.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
