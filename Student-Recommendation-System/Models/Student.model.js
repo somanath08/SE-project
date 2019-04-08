@@ -19,6 +19,7 @@ const StudentSchema = new mongoose.Schema({
   nn: Number,
   ip: Number,
   sem: Number,
+  courses: { type: [String], default: null },
 });
 const Students = mongoose.model('Student', StudentSchema, 'Students');
 
