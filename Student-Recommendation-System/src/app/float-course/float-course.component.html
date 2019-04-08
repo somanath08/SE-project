@@ -23,6 +23,13 @@
         Enter a valid course-name
       </mat-error></mat-form-field
     ><br />
+    <mat-form-field appearance="outline" class="margin">
+      <mat-label>Course ID</mat-label>
+      <input matInput placeholder="" formControlName="courseId" required />
+      <mat-error>
+        Enter a valid course ID
+      </mat-error></mat-form-field
+    ><br />
     <mat-error *ngIf="message">{{ message }}</mat-error>
     <mat-form-field appearance="outline" class="margin">
       <mat-label>Credits</mat-label>

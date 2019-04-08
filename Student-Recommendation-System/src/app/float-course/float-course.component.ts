@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DialougeComponent } from '../dialouge/dialouge.component';
 import { Course } from '../course-details';
@@ -41,6 +41,7 @@ export class FloatCourseComponent {
       Validators.required,
       Validators.pattern(/^[A-Z||a-z||0-9||\s||-]+$/),
     ]),
+    courseId: new FormControl('', Validators.required),
     credits: new FormControl(''),
     prerequisite: new FormControl(''),
   });

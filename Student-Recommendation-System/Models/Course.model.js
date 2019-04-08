@@ -4,6 +4,7 @@ const CourseSchema = new mongoose.Schema({
   facId: String,
   courseType: String,
   courseName: String,
+  courseId: String,
   credits: String,
   prerequisites: [String],
 });
