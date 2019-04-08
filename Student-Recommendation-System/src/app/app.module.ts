@@ -21,6 +21,8 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FloatCourseComponent } from './float-course/float-course.component';
 import { DialougeComponent } from './dialouge/dialouge.component';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { FacultyDashboardComponent } from './faculty-dashboard/faculty-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { DialougeComponent } from './dialouge/dialouge.component';
   DashboardComponent,
   FloatCourseComponent,
   DialougeComponent,
+  StudentDashboardComponent,
+  FacultyDashboardComponent,
   ],
   entryComponents: [DialougeComponent],
   imports: [

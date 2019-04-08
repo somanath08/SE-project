@@ -25,6 +25,10 @@ import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
+  MatExpansionModule,
+  MatAccordion,
+  MatNativeDateModule,
+  MatDatepickerModule,
 } from '@angular/material';
 
 @NgModule({
@@ -40,6 +44,9 @@ import {
   MatRadioModule,
   MatListModule,
   MatDialogModule,
+  MatExpansionModule,
+  MatNativeDateModule,
+  MatDatepickerModule,
   ],
   exports: [
   MatFormFieldModule,
@@ -52,6 +59,9 @@ import {
   MatRadioModule,
   MatListModule,
   MatDialogModule,
+  MatExpansionModule,
+  MatNativeDateModule,
+  MatDatepickerModule,
   ],
   })
 export class MaterialImportsModule {}
