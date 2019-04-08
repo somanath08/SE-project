@@ -31,6 +31,7 @@ export class AcadFormComponent {
 
     mtech: this.fb.group({
       grade: ['', Validators.required],
+      sem: ['', [Validators.required, Validators.pattern(/[1-4]/)]],
       pc: ['', Validators.required],
       dc: ['', Validators.required],
       cn: ['', Validators.required],

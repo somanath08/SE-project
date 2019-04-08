@@ -18,6 +18,7 @@ const StudentSchema = new mongoose.Schema({
   cg: Number,
   nn: Number,
   ip: Number,
+  sem: Number,
 });
 const Students = mongoose.model('Student', StudentSchema, 'Students');
 

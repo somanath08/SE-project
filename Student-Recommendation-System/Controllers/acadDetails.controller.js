@@ -24,6 +24,7 @@ exports.addAcadDetails = (request, response) => {
     cg: request.body.mtech.cg,
     nn: request.body.mtech.nn,
     ip: request.body.mtech.ip,
+    sem: request.body.mtech.sem,
   });
   newUserDetails.save((err) => {
     if (err) return console.error(err);
