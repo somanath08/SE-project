@@ -29,6 +29,8 @@ import {
   MatAccordion,
   MatNativeDateModule,
   MatDatepickerModule,
+  MatProgressSpinnerModule,
+  MatTableModule,
 } from '@angular/material';
 
 @NgModule({
@@ -47,6 +49,8 @@ import {
   MatExpansionModule,
   MatNativeDateModule,
   MatDatepickerModule,
+  MatProgressSpinnerModule,
+  MatTableModule,
   ],
   exports: [
   MatFormFieldModule,
@@ -62,6 +66,8 @@ import {
   MatExpansionModule,
   MatNativeDateModule,
   MatDatepickerModule,
+  MatProgressSpinnerModule,
+  MatTableModule,
   ],
   })
 export class MaterialImportsModule {}
