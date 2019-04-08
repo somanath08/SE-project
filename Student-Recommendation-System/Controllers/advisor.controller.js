@@ -1,7 +1,7 @@
 // Controller to handle all login/* routes
 /* eslint-disable no-console */
 import Student from '../Models/Student.model';
-import Marks from '../Models/Marks.model';
+import Grade from '../Models/Grades.model';
 
 const courses = [
   {
@@ -42,7 +42,7 @@ const courses = [
   },
 ];
 
-function sortAccordingToScores(a, b) {
+function compare(a, b) {
   return a.score - b.score;
 }
 
@@ -53,7 +53,7 @@ function getSuggestions(doc) {
   courses[3].score += doc.cg;
   courses[4].score += doc.nn;
   courses[5].score += doc.ip;
-  return courses.sort(sortAccordingToScores);
+  return courses.sort(compare);
 }
 
 exports.getAdviceForSemStart = (request, response) => {
@@ -69,15 +69,10 @@ exports.getAdviceForSemStart = (request, response) => {
 };
 
 exports.getAdviceForSemMid = (request, response) => {
-  Marks.findOne({ user: request.params.id }).exec((err1, doc) => {
-    if (err1) console.log(err1.message);
-    if (doc) {
-      console.log(`here1 ${doc}`);
-      for (let i = 0; i < courses.length; i += 1) {
-        if (courses[i].id === doc.id) {
-          return courses[i].avg - doc.avg >= 3 ? response.send('leave') : response.send('stay');
-        }
-      }
-    }
-  });
+  if (Grade[request.params.user][request.params.id] - request.params.grade >= 2) response.send('leave');
+  else response.send('stay');
+};
+
+exports.getAdviceForSem2Start = (request, response) => {
+  
 };
