@@ -1,45 +1,7 @@
 // Controller to handle all login/* routes
 /* eslint-disable no-console */
 import Student from '../Models/Student.model';
-
-const courses = [
-  {
-    id: 'pc',
-    name: 'Parallel Computing',
-    score: 0,
-    avg: 6,
-  },
-  {
-    id: 'dc',
-    name: 'Distributed Computing',
-    score: 0,
-    avg: 6,
-  },
-  {
-    id: 'cn',
-    name: 'Computer Networks',
-    score: 0,
-    avg: 6,
-  },
-  {
-    id: 'cg',
-    name: 'Cryptography',
-    score: 0,
-    avg: 6,
-  },
-  {
-    id: 'nn',
-    name: 'Neural Networks',
-    score: 0,
-    avg: 6,
-  },
-  {
-    id: 'ip',
-    name: 'Image Processing',
-    score: 0,
-    avg: 6,
-  },
-];
+import Courses from '../Models/Course.model';
 
 function compare(a, b) {
   return a.score - b.score;
@@ -62,14 +24,12 @@ function contains(main, sub) {
   return result;
 }
 
-function getSuggestions(doc) {
-  courses[0].score += doc.pc;
-  courses[1].score += doc.dc;
-  courses[2].score += doc.cn;
-  courses[3].score += doc.cg;
-  courses[4].score += doc.nn;
-  courses[5].score += doc.ip;
-  return courses.sort(compare);
+function getSuggestions(student, courses) {
+  const suggestions = [];
+  for (let i = 0; i < courses.length; i += 1) {
+    suggestions.push({ courseId: courses[i].courseId, score: student[courses[i].courseId] });
+  }
+  return suggestions.sort(compare);
 }
 
 exports.getAdviceForSemStart = (request, response) => {
@@ -78,7 +38,12 @@ exports.getAdviceForSemStart = (request, response) => {
     if (err1) console.log(err1.message);
     if (doc) {
       console.log(`here1 ${doc}`);
-      suggestions = getSuggestions(doc);
+      Courses.find({}).exec((err2, list) => {
+        if (err2) console.log(err2.message);
+        if (list) {
+          suggestions = getSuggestions(doc, list);
+        }
+      });
     }
   });
   return response.send(suggestions);
@@ -95,7 +60,7 @@ exports.getAdviceForSem2Start = (request, response) => {
     if (err1) console.log(err1.message);
     if (doc) {
       console.log(`here1 ${doc}`);
-      courses.find({}).exec((err2, docs) => {
+      Courses.find({}).exec((err2, docs) => {
         if (err1) console.log(err2.message);
         if (docs) {
           suggestions = docs.filter(course => contains(doc.courses, course));
