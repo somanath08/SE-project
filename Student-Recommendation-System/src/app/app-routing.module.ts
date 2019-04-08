@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationFormComponent },
   { path: 'acadform', component: AcadFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard/student', component: StudentDashboardComponent },
+  { path: 'dashboard/:id', component: StudentDashboardComponent },
   { path: 'floatcourse', component: FloatCourseComponent },
 ];
 
