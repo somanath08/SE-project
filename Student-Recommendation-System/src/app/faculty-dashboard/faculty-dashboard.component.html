@@ -45,6 +45,14 @@
           Float Course
         </button>
       </div>
+      <mat-card *ngIf="floated" class="mat-elevation-z5">
+        <div>
+          Name : {{ data.courseName }}<br />
+          Type: {{ data.courseType }} <br />
+          ID: {{ data.courseId }}<br />
+          Credits: {{ data.credits }} <br />
+        </div>
+      </mat-card>
       <mat-action-row>
         <button mat-button color="warn" (click)="prevStep()">Previous</button>
         <button mat-button color="primary" (click)="nextStep()">Next</button>
