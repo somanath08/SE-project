@@ -58,15 +58,17 @@ export class DashboardService {
 
   // URL to web api
   getAllDetails(): Observable<Courses[]> {
-    return this.http.get<Courses[]>(this.advisorUrl, { headers: this.httpOptions.headers }).pipe(
-      tap(_ => console.log('Got response')),
-      catchError(this.handleError<Courses[]>('getAllDetails')),
-    );
+    return this.http
+      .get<Courses[]>(this.allCourseDetailsUrl, { headers: this.httpOptions.headers })
+      .pipe(
+        tap(_ => console.log('Got response')),
+        catchError(this.handleError<Courses[]>('getAllDetails')),
+      );
   }
 
   // URL to web api
-  getCourseAdvice(): Observable<[]> {
-    return this.http.get<[]>(this.allCourseDetailsUrl, { headers: this.httpOptions.headers }).pipe(
+  getCourseAdvice(id: any): Observable<[]> {
+    return this.http.get<[]>(this.advisorUrl + id, { headers: this.httpOptions.headers }).pipe(
       tap(_ => console.log('Got response')),
       catchError(this.handleError<[]>('getCourseAdvice')),
     );
