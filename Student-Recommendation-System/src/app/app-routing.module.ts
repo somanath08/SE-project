@@ -5,11 +5,13 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { LoginComponent } from './login/login.component';
 import { FloatCourseComponent } from './float-course/float-course.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { FacultyDashboardComponent } from './faculty-dashboard/faculty-dashboard.component';
 
 const routes: Routes = [
   { path: 'registration', component: RegistrationFormComponent },
   { path: 'acadform', component: AcadFormComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'dashboard/faculty', component: FacultyDashboardComponent },
   { path: 'dashboard/:id', component: StudentDashboardComponent },
   { path: 'floatcourse', component: FloatCourseComponent },
 ];
