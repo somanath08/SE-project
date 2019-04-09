@@ -29,6 +29,14 @@ export class FacultyDashboardComponent implements OnInit {
 
   step = 0;
 
+  dataSource: string[];
+
+  details: Details;
+
+  columnsToDisplay = ['name'];
+
+  expandedElement: Details | null;
+
   ngOnInit() {
     this.floatCourse();
   }
@@ -46,7 +54,13 @@ export class FacultyDashboardComponent implements OnInit {
     });
   }
 
-  // studentList();
+  getDetails(id: any): void {
+    this.setStep(3);
+    this.dashboardService.getPersonalDetails(id).subscribe((details: Details) => {
+      console.log(details);
+      if (details) this.details = details;
+    });
+  }
 
   setStep(index: number) {
     this.step = index;

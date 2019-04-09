@@ -73,54 +73,34 @@
           <mat-icon>thumbs_up_down</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="example-container mat-elevation-z8">
-        <div class="example-loading-shade" *ngIf="isLoadingResults">
-          <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-
-          <div class="example-table-container">
-            <table mat-table [dataSource]="data" class="example-table">
-              <!-- Number Column -->
-              <ng-container matColumnDef="number">
-                <th mat-header-cell *matHeaderCellDef>#</th>
-                <td mat-cell *matCellDef="let row">{{ row.number }}</td>
-              </ng-container>
-
-              <!-- Title Column -->
-              <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef>Title</th>
-                <td mat-cell *matCellDef="let row">{{ row.title }}</td>
-              </ng-container>
-
-              <!-- State Column -->
-              <ng-container matColumnDef="state">
-                <th mat-header-cell *matHeaderCellDef>State</th>
-                <td mat-cell *matCellDef="let row">{{ row.state }}</td>
-              </ng-container>
-
-              <!-- Created Column -->
-              <ng-container matColumnDef="created">
-                <th
-                  mat-header-cell
-                  *matHeaderCellDef
-                  mat-sort-header
-                  disableClear
-                >
-                  Created
-                </th>
-                <td mat-cell *matCellDef="let row">
-                  {{ row.created_at | date }}
-                </td>
-              </ng-container>
-
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-            </table>
-          </div>
-        </div>
-      </div>
+      <mat-list role="list">
+        <mat-list-item
+          style="cursor:pointer"
+          (click)="getDetails(reg.value)"
+          role="listitem"
+          *ngFor="let reg of (data.registered | keyvalue)"
+          >{{ reg.value }} <br />
+        </mat-list-item>
+      </mat-list>
       <mat-action-row>
         <button mat-button color="warn" (click)="prevStep()">Previous</button>
         <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel hideToggle [expanded]="step === 3" *ngIf="step === 3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal data of the Student
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        Name : {{ details.firstName }} {{ details.lastName }}<br />
+        Email: {{ details.email }} <br />
+        Registration Id : {{ details.user }} <br />
+        Mobile: {{ details.mobile }} <br />
+      </div>
+      <mat-action-row>
+        <button mat-button color="warn" (click)="setStep(2)">Close</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
