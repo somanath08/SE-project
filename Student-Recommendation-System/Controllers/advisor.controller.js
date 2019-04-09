@@ -27,7 +27,11 @@ function contains(main, sub) {
 function getSuggestions(student, courses) {
   const suggestions = [];
   for (let i = 0; i < courses.length; i += 1) {
-    suggestions.push({ courseId: courses[i].courseId, score: student[courses[i].courseId] });
+    suggestions.push({
+      courseId: courses[i].courseId,
+      score: student[courses[i].courseId],
+      courseName: courses[i].courseName,
+    });
   }
   return suggestions.sort(compare);
 }
