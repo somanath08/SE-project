@@ -3,6 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Details } from './details';
+import { Courses } from './student-dashboard/student-dashboard.component';
+
+export interface Courses {
+  courseType: String;
+  courseName: String;
+  courseId: String;
+  credits: String;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +18,13 @@ import { Details } from './details';
 export class DashboardService {
   constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:3000/dashboard/details/';
+  private personalDetailsUrl = 'http://localhost:3000/dashboard/details/personal/';
+
+  private courseDetailsUrl = 'http://localhost:3000/dashboard/details/course/';
+
+  private allCourseDetailsUrl = 'http://localhost:3000/dashboard/details/course/all';
+
+  private advisorUrl = 'http://localhost:3000/advise/start/1/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,10 +37,38 @@ export class DashboardService {
   };
 
   // URL to web api
-  getDashboard(id: any): Observable<Details> {
-    return this.http.get<Details>(this.apiUrl + id, { headers: this.httpOptions.headers }).pipe(
+  getPersonalDetails(id: any): Observable<Details> {
+    return this.http
+      .get<Details>(this.personalDetailsUrl + id, { headers: this.httpOptions.headers })
+      .pipe(
+        tap(_ => console.log('Got response')),
+        catchError(this.handleError<Details>('getPersonalDetails')),
+      );
+  }
+
+  // URL to web api
+  getCourseDetails(id: any): Observable<Courses[]> {
+    return this.http
+      .get<Courses[]>(this.courseDetailsUrl + id, { headers: this.httpOptions.headers })
+      .pipe(
+        tap(_ => console.log('Got response')),
+        catchError(this.handleError<Courses[]>('getCourseDetails')),
+      );
+  }
+
+  // URL to web api
+  getAllDetails(): Observable<Courses[]> {
+    return this.http.get<Courses[]>(this.advisorUrl, { headers: this.httpOptions.headers }).pipe(
       tap(_ => console.log('Got response')),
-      catchError(this.handleError<Details>('getDashboard')),
+      catchError(this.handleError<Courses[]>('getAllDetails')),
+    );
+  }
+
+  // URL to web api
+  getCourseAdvice(): Observable<[]> {
+    return this.http.get<[]>(this.allCourseDetailsUrl, { headers: this.httpOptions.headers }).pipe(
+      tap(_ => console.log('Got response')),
+      catchError(this.handleError<[]>('getCourseAdvice')),
     );
   }
 
