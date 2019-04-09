@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 import { Details } from '../details';
 import { DashboardService } from '../dashboard.service';
 
@@ -48,6 +49,8 @@ export class StudentDashboardComponent implements OnInit {
     mobile: '',
     email: '',
   };
+
+  subjects = new FormControl('', Validators.required);
 
   getDetails(): void {
     const id = this.route.snapshot.paramMap.get('id');
