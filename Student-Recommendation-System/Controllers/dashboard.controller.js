@@ -1,6 +1,5 @@
 // Controller to handle all login/* routes
 /* eslint-disable no-console */
-import { register } from 'ts-node';
 import Users from '../Models/Users.model';
 import Courses from '../Models/Course.model';
 import Student from '../Models/Student.model';
