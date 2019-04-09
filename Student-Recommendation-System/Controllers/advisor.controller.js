@@ -40,13 +40,16 @@ exports.getAdviceForSemStart = (request, response) => {
       console.log(`here1 ${doc}`);
       Courses.find({}).exec((err2, list) => {
         if (err2) console.log(err2.message);
+        console.log('list: ', list);
         if (list) {
           suggestions = getSuggestions(doc, list);
+          console.log(suggestions, 'Suggestions:');
+          return response.send(suggestions);
         }
+        return response.send(suggestions);
       });
     }
   });
-  return response.send(suggestions);
 };
 
 exports.getAdviceForSemMid = (request, response) => {
