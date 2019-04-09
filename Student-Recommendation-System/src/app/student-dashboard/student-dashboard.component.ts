@@ -3,6 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Details } from '../details';
 import { DashboardService } from '../dashboard.service';
 
+export interface Courses {
+  courseType: String;
+  courseName: String;
+  courseId: String;
+  credits: String;
+}
+
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.component.html',
@@ -15,11 +22,19 @@ export class StudentDashboardComponent implements OnInit {
     private router: Router,
   ) {}
 
+  displayedColumns: string[] = ['ID', 'Name', 'Type', 'Credits'];
+
   ngOnInit() {
     this.getDetails();
+    this.getCourses();
+    this.getAdvice();
   }
 
   step = 0;
+
+  dataSource: Courses[];
+
+  courses: [];
 
   details: Details = {
     user: '',
@@ -31,17 +46,23 @@ export class StudentDashboardComponent implements OnInit {
 
   getDetails(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.dashboardService.getDashboard(id).subscribe((details: Details) => {
+    this.dashboardService.getPersonalDetails(id).subscribe((details: Details) => {
       console.log(details);
       if (details) this.details = details;
     });
   }
 
   getCourses(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.dashboardService.getDashboard(id).subscribe((details: Details) => {
-      console.log(details);
-      if (details) this.details = details;
+    this.dashboardService.getAllDetails().subscribe((courses: Courses[]) => {
+      console.log(courses);
+      if (courses) this.dataSource = courses;
+    });
+  }
+
+  getAdvice(): void {
+    this.dashboardService.getCourseAdvice().subscribe((courses: []) => {
+      console.log(courses);
+      if (courses) this.courses = courses;
     });
   }
 
