@@ -1,5 +1,6 @@
 // Controller to handle all login/* routes
 /* eslint-disable no-console */
+import { register } from 'ts-node';
 import Users from '../Models/Users.model';
 import Courses from '../Models/Course.model';
 import Student from '../Models/Student.model';
@@ -42,9 +43,18 @@ exports.getCourseDetails = (request, response) => {
 
 exports.addCourses = (request, response) => {
   console.log(request.body);
-  Student.updateOne({ user: request.params.id }, { $set: { courses: request.body.subjects } }).exec(
+  Student.updateOne({ user: request.params.id }, { $set: { courses: request.body } }).exec(
     (err, doc) => {
       console.log(doc);
+      for (let i = 0; i < request.body.length; i += 1) {
+        Courses.updateOne(
+          { courseId: request.body[i] },
+          { $push: { registered: request.params.id } },
+        ).exec((err1, res) => {
+          if (err1) console.log(err1.message);
+          console.log(res);
+        });
+      }
       if (err) console.log(err.message);
       return response.send('Saved');
     },
