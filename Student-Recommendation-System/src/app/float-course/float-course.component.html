@@ -41,8 +41,8 @@
     </mat-form-field>
     <br />
     <mat-form-field appearance="outline" class="margin">
-      <mat-label>Credits</mat-label>
-      <mat-select formControlName="credits" required>
+      <mat-label>Semester</mat-label>
+      <mat-select formControlName="sem" required>
         <mat-option [value]="1">
           1
         </mat-option>
@@ -64,5 +64,13 @@
     <button mat-raised-button color="primary" [disabled]="!courseForm.valid">
       Float
     </button>
+    <!-- <button
+      mat-raised-button
+      color="primary"
+      (click)="findInvalidControls()"
+      type="button"
+    >
+      Invalid
+    </button> -->
   </mat-card>
 </form>

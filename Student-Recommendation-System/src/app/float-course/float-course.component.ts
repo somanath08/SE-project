@@ -17,7 +17,7 @@ export class FloatCourseComponent {
     public dialog: MatDialog,
   ) {}
 
-  course: Course[] = [{ value: 'lab', viewValue: 'Lab' }, { value: 'theory', viewValue: 'Theory' }];
+  course: Course[] = [{ value: 'lab', viewValue: 'Lab' }, { value: 'Theory', viewValue: 'Theory' }];
 
   prerequisites: Course[] = [
     { value: 'programming', viewValue: 'programming' },
@@ -46,7 +46,7 @@ export class FloatCourseComponent {
     prerequisite: new FormControl(''),
   });
 
-  openDialog(msg, valid): void {
+  openDialog(msg: string, valid: boolean): void {
     const dialogRef = this.dialog.open(DialougeComponent, {
       width: '250px',
       data: { title: 'Status', message: msg, valid },
@@ -69,5 +69,16 @@ export class FloatCourseComponent {
         this.openDialog('An error occured, please try again later', false);
       }
     });
+  }
+
+  public findInvalidControls() {
+    const invalid = [];
+    const { controls } = this.courseForm;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    console.log(invalid);
   }
 }
