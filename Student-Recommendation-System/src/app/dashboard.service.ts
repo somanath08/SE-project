@@ -26,6 +26,8 @@ export class DashboardService {
 
   private allCourseDetailsUrl = 'http://localhost:3000/dashboard/details/course/all';
 
+  private floatedCourseUrl = 'http://localhost:3000/dashboard/details/floated/';
+
   private advisorUrl = 'http://localhost:3000/advise/start/1/';
 
   httpOptions = {
@@ -86,6 +88,16 @@ export class DashboardService {
       tap(_ => console.log('Got response')),
       catchError(this.handleError<[]>('getCourseAdvice')),
     );
+  }
+
+  // URL to web api
+  getfloatedCourse(id: any): Observable<Courses> {
+    return this.http
+      .get<Courses>(this.floatedCourseUrl + id, { headers: this.httpOptions.headers })
+      .pipe(
+        tap(_ => console.log('Got response')),
+        catchError(this.handleError<Courses>('getFloatedCourse')),
+      );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
