@@ -59,3 +59,14 @@ exports.addCourses = (request, response) => {
     },
   );
 };
+
+exports.getFloatedCourse = (request, response) => {
+  Courses.findOne({ facId: request.params.id }).exec((err, doc) => {
+    console.log(doc);
+    if (err) console.log(err.message);
+    if (doc) {
+      return response.send(doc);
+    }
+    return response.send({});
+  });
+};
