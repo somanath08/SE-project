@@ -39,3 +39,19 @@ exports.getCourseDetails = (request, response) => {
     return response.send([]);
   });
 };
+
+exports.addCourses = (request, response) => {
+  console.log(request.body);
+  Student.find({ user: request.params.id }).exec((err, doc) => {
+    console.log(doc);
+    if (err) console.log(err.message);
+    if (doc) {
+      // eslint-disable-next-line no-param-reassign
+      doc.courses = request.body.subjects;
+      doc.save((err1) => {
+        if (err1) return response.send(err1);
+        return response.send('Saved');
+      });
+    }
+  });
+};

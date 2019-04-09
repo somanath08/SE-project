@@ -6,5 +6,6 @@ const router = Router();
 router.get('/details/course/all', callback.getAllCourses);
 router.get('/details/personal/:user', callback.getPersonalDetails);
 router.get('/details/course/:user', callback.getCourseDetails);
+router.post('/details/course/add/:id', callback.addCourses);
 
 module.exports = router;
