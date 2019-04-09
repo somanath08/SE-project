@@ -75,6 +75,13 @@ export class StudentDashboardComponent implements OnInit {
     });
   }
 
+  addCourses(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.dashboardService.add(this.subjects.value, id).subscribe((status) => {
+      console.log(status);
+    });
+  }
+
   setStep(index: number) {
     this.step = index;
   }

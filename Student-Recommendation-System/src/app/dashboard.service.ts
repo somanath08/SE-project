@@ -22,6 +22,8 @@ export class DashboardService {
 
   private courseDetailsUrl = 'http://localhost:3000/dashboard/details/course/';
 
+  private addcourseDetailsUrl = 'http://localhost:3000/dashboard/details/course/add/';
+
   private allCourseDetailsUrl = 'http://localhost:3000/dashboard/details/course/all';
 
   private advisorUrl = 'http://localhost:3000/advise/start/1/';
@@ -63,6 +65,18 @@ export class DashboardService {
       .pipe(
         tap(_ => console.log('Got response')),
         catchError(this.handleError<Courses[]>('getAllDetails')),
+      );
+  }
+
+  add(data: any, id: any): Observable<string> {
+    return this.http
+      .post(this.addcourseDetailsUrl + id, data, {
+        headers: this.httpOptions.headers,
+        responseType: 'text',
+      })
+      .pipe(
+        tap(_ => console.log('Got response')),
+        catchError(this.handleError<string>('add', '')),
       );
   }
 
