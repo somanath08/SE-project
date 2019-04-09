@@ -10,6 +10,11 @@ export interface Courses {
   credits: String;
 }
 
+export interface Advice {
+  courseName: String;
+  courseId: String;
+}
+
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.component.html',
@@ -60,9 +65,10 @@ export class StudentDashboardComponent implements OnInit {
   }
 
   getAdvice(): void {
-    this.dashboardService.getCourseAdvice().subscribe((courses: []) => {
-      console.log(courses);
-      if (courses) this.courses = courses;
+    const id = this.route.snapshot.paramMap.get('id');
+    this.dashboardService.getCourseAdvice(id).subscribe((c: []) => {
+      console.log(c);
+      if (c) this.courses = c;
     });
   }
 

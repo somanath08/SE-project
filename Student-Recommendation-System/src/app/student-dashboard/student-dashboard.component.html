@@ -95,7 +95,16 @@
           <mat-icon>thumbs_up_down</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-
+      <mat-selection-list #cc>
+        <mat-list-option
+          #cs
+          *ngFor="let x of (courses | keyvalue)"
+          [disabled]="cc.selectedOptions.selected.length == 3 && !cs.selected"
+        >
+          {{ x.value.courseId }}
+        </mat-list-option>
+      </mat-selection-list>
+      <p>Options selected: {{ cc.selectedOptions.selected.length }}</p>
       <mat-action-row>
         <button mat-button color="warn" (click)="prevStep()">Previous</button>
         <button mat-button color="primary" (click)="nextStep()">End</button>
