@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationFormComponent },
   { path: 'acadform', component: AcadFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard/faculty', component: FacultyDashboardComponent },
+  { path: 'dashboard/faculty/:id', component: FacultyDashboardComponent },
   { path: 'dashboard/:id', component: StudentDashboardComponent },
   { path: 'floatcourse', component: FloatCourseComponent },
 ];
