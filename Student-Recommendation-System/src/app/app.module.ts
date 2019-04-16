@@ -18,7 +18,6 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { MaterialImportsModule } from './material-imports.module';
 import { AcadFormComponent } from './acad-form/acad-form.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { FloatCourseComponent } from './float-course/float-course.component';
 import { DialougeComponent } from './dialouge/dialouge.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
@@ -30,7 +29,6 @@ import { FacultyDashboardComponent } from './faculty-dashboard/faculty-dashboard
   RegistrationFormComponent,
   AcadFormComponent,
   LoginComponent,
-  DashboardComponent,
   FloatCourseComponent,
   DialougeComponent,
   StudentDashboardComponent,
