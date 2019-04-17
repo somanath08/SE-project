@@ -8,6 +8,7 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { FacultyDashboardComponent } from './faculty-dashboard/faculty-dashboard.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'registration', component: RegistrationFormComponent },
   { path: 'acadform', component: AcadFormComponent },
   { path: 'login', component: LoginComponent },

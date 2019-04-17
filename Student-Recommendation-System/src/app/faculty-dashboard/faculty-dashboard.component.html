@@ -41,7 +41,12 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div *ngIf="!floated">
-        <button mat-button color="primary" (click)="floatCourse()">
+        <button
+          mat-button
+          color="primary"
+          (click)="floatCourse()"
+          routerLink="/floatcourse"
+        >
           Float Course
         </button>
       </div>
@@ -63,6 +68,7 @@
       [expanded]="step === 2"
       (opened)="setStep(2)"
       hideToggle
+      *ngIf="floated"
     >
       <mat-expansion-panel-header>
         <mat-panel-title>

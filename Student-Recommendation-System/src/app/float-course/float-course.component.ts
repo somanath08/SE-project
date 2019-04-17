@@ -53,7 +53,7 @@ export class FloatCourseComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (valid) this.router.navigate([`/dashboard/${this.courseForm.get('facId').value}`]);
+      if (valid) this.router.navigate([`/dashboard/faculty/${this.courseForm.get('facId').value}`]);
       else this.courseForm.reset();
     });
   }

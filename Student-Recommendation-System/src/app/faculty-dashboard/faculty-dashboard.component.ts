@@ -39,6 +39,7 @@ export class FacultyDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.floatCourse();
+    this.floated = false;
   }
 
   // getPersonalDetails();
@@ -47,10 +48,11 @@ export class FacultyDashboardComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.dashboardService.getfloatedCourse(id).subscribe((course: Courses) => {
       console.log(course);
-      if (course) {
+      if (course.courseId) {
         this.data = course;
         this.floated = true;
       }
+      console.log(this.floated);
     });
   }
 
