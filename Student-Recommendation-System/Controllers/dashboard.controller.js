@@ -29,9 +29,9 @@ exports.getAllCourses = (request, response) => {
 };
 
 exports.getCourseDetails = (request, response) => {
-  console.log(`${JSON.stringify(request.params.user, null, 4)}`);
-  Student.find({ user: request.params.id }).exec((err, doc) => {
-    console.log(doc);
+  console.log(`${JSON.stringify(request.params, null, 4)}`);
+  Student.findOne({ user: request.params.user }).exec((err, doc) => {
+    console.log('Enrolled', doc);
     if (err) console.log(err.message);
     if (doc) {
       return response.send(doc.courses);
@@ -41,7 +41,7 @@ exports.getCourseDetails = (request, response) => {
 };
 
 exports.addCourses = (request, response) => {
-  console.log(request.body);
+  console.log('Added', request.body);
   Student.updateOne({ user: request.params.id }, { $set: { courses: request.body } }).exec(
     (err, doc) => {
       console.log(doc);
