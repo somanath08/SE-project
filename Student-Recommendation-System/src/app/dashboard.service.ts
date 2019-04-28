@@ -30,6 +30,8 @@ export class DashboardService {
 
   private advisorUrl = 'http://localhost:3000/advise/start/1/';
 
+  private advisorMidUrl = 'http://localhost:3000/advise/mid/';
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -51,12 +53,12 @@ export class DashboardService {
   }
 
   // URL to web api
-  getCourseDetails(id: any): Observable<Courses[]> {
+  getCourseDetails(id: any): Observable<[]> {
     return this.http
-      .get<Courses[]>(this.courseDetailsUrl + id, { headers: this.httpOptions.headers })
+      .get<[]>(this.courseDetailsUrl + id, { headers: this.httpOptions.headers })
       .pipe(
         tap(_ => console.log('Got response')),
-        catchError(this.handleError<Courses[]>('getCourseDetails')),
+        catchError(this.handleError<[]>('getCourseDetails')),
       );
   }
 
@@ -88,6 +90,17 @@ export class DashboardService {
       tap(_ => console.log('Got response')),
       catchError(this.handleError<[]>('getCourseAdvice')),
     );
+  }
+
+  // URL to web api
+  getMidCourseAdvice(grade: number): Observable<string> {
+    console.log('Here');
+    return this.http
+      .get<string>(this.advisorMidUrl + grade, { headers: this.httpOptions.headers })
+      .pipe(
+        tap(_ => console.log('Got response for Mid Sem')),
+        catchError(this.handleError<string>('getMidCourseAdvice')),
+      );
   }
 
   // URL to web api
