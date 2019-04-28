@@ -85,6 +85,7 @@
       [expanded]="step === 2"
       (opened)="setStep(2)"
       hideToggle
+      *ngIf="!ifEnrolled"
     >
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -98,7 +99,7 @@
       <mat-selection-list #cc [formControl]="subjects">
         <mat-list-option
           #cs
-          [value]="x.value.courseId"
+          [value]="x.value.courseName"
           *ngFor="let x of (courses | keyvalue)"
           [disabled]="cc.selectedOptions.selected.length == 3 && !cs.selected"
         >
@@ -117,6 +118,51 @@
         </button>
         <button mat-button color="warn" (click)="prevStep()">Previous</button>
         <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      [expanded]="step === 3"
+      (opened)="setStep(3)"
+      hideToggle
+      *ngIf="ifEnrolled"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Courses enrolled
+        </mat-panel-title>
+        <mat-panel-description>
+          List of enrolled courses
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list role="list">
+        <mat-list-item
+          style="cursor:pointer"
+          (click)="showCourse(reg, i)"
+          role="listitem"
+          *ngFor="let reg of enrolled; let i = index"
+          >{{ reg }} <br />
+        </mat-list-item>
+      </mat-list>
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="setStep(-1)">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel hideToggle [expanded]="step === 4" *ngIf="step === 4">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Details of the course
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        Name: {{ selectedCourse.courseName }}<br />
+        Type: {{ selectedCourse.courseType }}<br />
+        ID: {{ selectedCourse.courseId }}<br />
+        Credits: {{ selectedCourse.credits }}<br />
+        Recomendation: {{ recomendation }}
+      </div>
+      <mat-action-row>
+        <button mat-button color="warn" (click)="setStep(3)">Close</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>

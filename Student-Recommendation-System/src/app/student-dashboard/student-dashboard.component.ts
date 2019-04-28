@@ -31,16 +31,33 @@ export class StudentDashboardComponent implements OnInit {
   displayedColumns: string[] = ['ID', 'Name', 'Type', 'Credits'];
 
   ngOnInit() {
+    this.ifEnrolled = false;
     this.getDetails();
     this.getCourses();
     this.getAdvice();
+    this.getEnrolledCourses();
+    this.grades = Array.from({ length: 3 }, () => Math.floor(Math.random() * 4) + 6);
+    this.average = Array.from({ length: 3 }, () => Math.floor(Math.random() * 5) + 4);
+    console.log(this.grades, this.average);
   }
+
+  grades: number[];
+
+  average: number[];
 
   step = 0;
 
+  recomendation = 'None';
+
   dataSource: Courses[];
 
+  selectedCourse: Courses;
+
   courses: [];
+
+  enrolled: string[];
+
+  ifEnrolled = false;
 
   details: Details = {
     user: '',
@@ -56,7 +73,9 @@ export class StudentDashboardComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.dashboardService.getPersonalDetails(id).subscribe((details: Details) => {
       console.log(details);
-      if (details) this.details = details;
+      if (details) {
+        this.details = details;
+      }
     });
   }
 
@@ -79,7 +98,34 @@ export class StudentDashboardComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.dashboardService.add(this.subjects.value, id).subscribe((status) => {
       console.log(status);
+      if ((status = 'Saved')) {
+        this.getEnrolledCourses();
+      }
     });
+  }
+
+  getEnrolledCourses(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.dashboardService.getCourseDetails(id).subscribe((enrolled) => {
+      console.log(enrolled);
+      if (enrolled !== []) {
+        this.ifEnrolled = true;
+        this.enrolled = enrolled;
+      }
+    });
+  }
+
+  showCourse(name: string, i: number): void {
+    console.log(i);
+    if (this.grades[i] - this.average[i] >= 2) this.recomendation = 'Leave';
+    else this.recomendation = 'Stay';
+    this.setStep(4);
+    for (let i = 0; i < this.dataSource.length; i++) {
+      if (this.dataSource[i].courseName === name) {
+        this.selectedCourse = this.dataSource[i];
+        break;
+      }
+    }
   }
 
   setStep(index: number) {
