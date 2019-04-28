@@ -57,8 +57,9 @@ exports.getAdviceForSemStart = (request, response) => {
 };
 
 exports.getAdviceForSemMid = (request, response) => {
-  if (Math.floor(Math.random() * 10) + 4 - request.params.grade >= 2) return response.send('leave');
-  return response.send('stay');
+  console.log('Advice in Mid');
+  if (Math.floor(Math.random() * 5) + 4 - request.params.grade >= 2) return response.send('Leave');
+  return response.send('Stay');
 };
 
 exports.getAdviceForSem2Start = (request, response) => {
