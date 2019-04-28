@@ -52,7 +52,7 @@ export class FacultyDashboardComponent implements OnInit {
         this.data = course;
         this.floated = true;
       }
-      console.log(this.floated);
+      console.log(this.data);
     });
   }
 
