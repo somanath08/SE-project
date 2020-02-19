@@ -48,8 +48,6 @@ We use `nodemailer` to send confirmation emails to registered users and hence we
 
 *You can skip this step but then a user will not be able to access his dashboard after registering and you will need to resort to some manual routing to get the job done.*
 
-`:TODO: How to run the application without nodemailer setup`
-
 Once you have setup nodemailer do the following:
 
 ```bash
@@ -63,6 +61,7 @@ Paste the following information in the `.env` file
 PORT=3000
 FROM_EMAIL=<your-email>
 PASS=<the-password-you-have-for-this>
+MONGO_URI='mongodb://localhost:27017/srs'
 ```
 
 ***Remember to edit the content before saving the file.***
@@ -88,7 +87,7 @@ mongod --port 27017 --dbpath=.data
 We then move on and start the application server. Inside the `Student-Recommendation-System` directory, run the following command in a new terminal window.
 
 ```bash
-node server.js
+npm run dev
 ```
 
 Finally, we start the Angular development server
